@@ -1,12 +1,12 @@
 # nn_patristic_classifier
-##Use
+## Use
 Determines unlabeled clades in a tree based on then earest neighbor determined by patristic distances.
 
-##Input
+## Input
 Tree in either newick or nexus format containing both reference sequences and query sequences.
 
-##Output
+## Output
 Text output stating the clade with the closest designation.
 
-##Future Considerations
+## Future Considerations
 Reannotate the tree with NN-clades for ease of use.

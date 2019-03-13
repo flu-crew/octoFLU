@@ -8,5 +8,7 @@ Tree in either newick or nexus format containing both reference sequences and qu
 ## Output
 Text output stating the clade with the closest designation.
 
+## Usage
+Rscript nn_classifier.R path-to-tree-file
 ## Future Considerations
 Reannotate the tree with NN-clades for ease of use.

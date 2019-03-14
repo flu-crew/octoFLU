@@ -22,7 +22,7 @@ Reannotate the tree with NN-clades for ease of use.
 Edit the paths in `pipeline.sh`. You will need to have an installation of NCBI Blast, [smof](https://github.com/incertae-sedis/smof), mafft, FastTree and the included `nn_classifier.R` script.
 
 ```
-# Connect your reference here
+# Connect your reference dataset here
 REFERENCE=sample_data/reference.fa
 
 # Connect your programs here, can use full path names
@@ -40,47 +40,36 @@ Then run the pipeline
 bash pipeline.sh sample_data/query.fasta
 ```
 
-The output will be in a `*_Final_Output.txt` file, and any trees will be listed.
+The output will be in a `*_Final_Output.txt` file, any trees generated will be listed and named by protein symbol, and `*_output.txt` includes the query genes and their top BLASTn hit.
 
-```
-bash pipeline.sh sample_data/query.fasta
-less query.fasta_Final_output.txt
-
-A02430617	H1	alpha 
-A02430842|alpha	H1	alpha 
-A02430609|alpha	H1	alpha 
-A02430671|gamma	H1	gamma 
-A02430672|gamma	H1	gamma 
-A02430761|gamma	H1	gamma 
-```
-
-A longer example. This main bottleneck is waiting for trees to run in FastTree. A sampling of the output is included, split by `...`.
+The main bottleneck is waiting for trees to run in FastTree (an installation of multi-threaded version helps). A sampling of the output is included, split by `...`.
 
 ```
 bash pipeline.sh sample_data/query.fasta
 
 less query.fasta_Final_Output.txt
 
-QUERY_JN652498_A/swine/Indiana/A01049794/2011_H1N2_2011/04/06_H1_delta1b_02A_2_TTTPPT   H1      delta1b 
-QUERY_MF000477_A/swine/North_Carolina/A02214000/2017_H1N2_2017/03/16_H1_alpha_02B_1_TTPPPT      H1      alpha 
-QUERY_KF150184_A/swine/Nebraska/A01380503/2013_H1N1_2013/05/07_H1_beta_Classical_TTTTTT H1      beta 
-QUERY_MH350902_A/swine/Nebraska/A02157974/2018_H1N1_2018/04/18_H1_gamma2-beta-like_MN99_TVVVVT  H1      gamma2-beta-like
+QUERY_MH540411_A/swine/Iowa/A02169143/2018		    H1	pdm		1A.3.3.2 
+QUERY_MH595470_A/swine/South_Dakota/A02170160/2018	H1	delta1	1B.2.2.2 
+QUERY_MH595472_A/swine/Illinois/A02170163/2018		H1	alpha	1A.1.1 
 ...
-QUERY_CY114857_A/swine/Minnesota/A01201895/2011_H3N2_2011/07/05_H3_Cluster_IVD_2002B_TPPPPP     H3      Cluster_IVD 
-QUERY_JX657749_A/swine/Illinois/A01240775/2012_H3N2_2012/01/09_H3_Cluster_IVE_02A_2_TTPPPT      H3      Cluster_IVE 
-QUERY_JQ783074_A/swine/Illinois/A01201076/2011_H3N2_2011/04/07_H3_Cluster_IVF_98A_2_TTTPPP      H3      Cluster_IVF 
+QUERY_MH546131_A/swine/Minnesota/A01785562/2018		H3	2010-human_like	3.2010.1 
+QUERY_MH561745_A/swine/Minnesota/A01785568/2018		H3	2010-human_like	3.2010.1 
+QUERY_MH551260_A/swine/Iowa/A02016898/2018			H3	2010-human_like	3.2010.1 
 ...
-QUERY_KX928653_A/swine/Indiana/A01781271/2016_H1N1_2016/09/14_N1_gamma_Classical_TTPPPT N1      Classical 
-QUERY_KF150185_A/swine/Nebraska/A01380503/2013_H1N1_2013/05/07_N1_beta_Classical_TTTTTT N1      Classical 
-QUERY_MF692782_A/swine/North_Carolina/A01785281/2017_H1N1_2017/07/28_N1_gamma_Classical_TTTPPT  N1      Classical
+QUERY_MH551259_A/swine/Iowa/A02016897/2018			N1	classicalSwine 
+QUERY_MH561752_A/swine/Minnesota/A01785574/2018		N1	classicalSwine 
+QUERY_MH551263_A/swine/Minnesota/A02016891/2018		N1	classicalSwine 
 ...
-QUERY_JX092572_A/swine/Indiana/A01202866/2011_H3N2_2011/11/16_N2_Cluster_IVC_2002B_PTPPPT       N2      2002B 
-QUERY_CY114858_A/swine/Minnesota/A01201895/2011_H3N2_2011/07/05_N2_Cluster_IVD_2002B_TPPPPP     N2      2002B 
-QUERY_MF471677_A/swine/Oklahoma/A02218159/2017_H3N2_2017/06/12_N2_human-like_2010.2_2016_TTTTPT N2      2016 
+QUERY_MK024152_A/swine/Minnesota/A01785613/2018		N2	1998_NA_N2 
+QUERY_MH976804_A/swine/Michigan/A01678583/2018		N2	1998_NA_N2 
+QUERY_MH595471_A/swine/South_Dakota/A02170160/2018	N2	2002_NA_N2 
 ...
-QUERY_JX306665_A/swine/Illinois/A01240775/2012_H3N2_2012/01/09_PB2_Cluster_IVE_02A_2_TTPPPT     PB2     TTPPPT 
-QUERY_JX182047_A/swine/Minnesota/A01201895/2011_H3N2_2011/07/05_PB2_Cluster_IVD_2002B_TPPPPP    PB2     TPPPPP 
-QUERY_JQ791001_A/swine/Illinois/A01047014/2010_H3N2_2010/11/22_PB2_Cluster_IV_Human_N2_TTTTTT   PB2     TTTPTT
+QUERY_MH922882_A/swine/Ohio/18TOSU4536/2018		M	pdm_EurasianSwOrigin 
+QUERY_MK321295_A/swine/Florida/A01104129/2018	M	pdm_EurasianSwOrigin 
+QUERY_MK129490_A/swine/Illinois/A02170163/2018	M	pdm_EurasianSwOrigin
 ...
-
+QUERY_MK185286_A/swine/Iowa/A02016889/2018	PB1	TRIG_huOrigin 
+QUERY_MK185322_A/swine/Iowa/A02169143/2018	PB1	pdm_TRIGhuOrigin 
+QUERY_MK039744_A/swine/Iowa/A02254795/2018	PB1	TRIG_huOrigin
 ```

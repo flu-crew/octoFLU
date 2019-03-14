@@ -78,3 +78,7 @@ touch ${BASENAME}_Final_Output.txt
 [ -s ${BASENAME}_NP.ids ] && Rscript ${MICHAEL} ${BASENAME}_NP.tre 5 8 >> ${BASENAME}_Final_Output.txt
 [ -s ${BASENAME}_M.ids ] && Rscript ${MICHAEL} ${BASENAME}_M.tre 5 8 >> ${BASENAME}_Final_Output.txt
 [ -s ${BASENAME}_NS.ids ] && Rscript ${MICHAEL} ${BASENAME}_NS.tre 5 8 >> ${BASENAME}_Final_Output.txt
+
+echo "==== Final results in  ${BASENAME}_Final_Output.txt"
+echo "Tree files are listed below: "
+ls -ltr ${BASENAME}*.tre

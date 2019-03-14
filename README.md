@@ -1,12 +1,12 @@
-# nn_patristic_classifier
+# Classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin
 ## Use
-Determines unlabeled clades in a tree based on then earest neighbor determined by patristic distances.
+Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a gdefined genetic clade  based on nearest neighbor determined by patristic distances.
 
 ## Input
-Tree in either newick or nexus format containing both reference sequences and query sequences.
+Unaligned fasta with query sequences (deflione without "|").
 
 ## Output
-Text output stating the clade with the closest designation.
+Text output stating the query name, protein symbol, and genetic clade. An additional output file holds the query name and top BLASTn hit.
 
 ## Usage
 
@@ -31,20 +31,20 @@ MAKEBLASTDB=~/bin/makeblastdb
 SMOF=~/bin/smof
 MAFFT=`which mafft`
 FASTTREE=~/bin/FastTree
-MICHAEL=nn_classifier.R
+NN_CLASS=nn_classifier.R
 ```
 
 Then run the pipeline
 
 ```
-bash pipeline.sh query.fasta
+bash pipeline.sh sample_data/query.fasta
 ```
 
 The output will be in a `*_Final_Output.txt` file, and any trees will be listed.
 
 ```
-bash pipeline.sh sample_data/sample2.fasta
-less sample2.fasta_Final_output.txt
+bash pipeline.sh sample_data/query.fasta
+less query.fasta_Final_output.txt
 
 A02430617	H1	alpha 
 A02430842|alpha	H1	alpha 

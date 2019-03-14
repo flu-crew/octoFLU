@@ -1,9 +1,9 @@
 # Classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin
 ## Use
-Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a gdefined genetic clade  based on nearest neighbor determined by patristic distances.
+Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
 ## Input
-Unaligned fasta with query sequences (deflione without "|").
+Unaligned fasta with query sequences (defline without "|").
 
 ## Output
 Text output stating the query name, protein symbol, and genetic clade. An additional output file holds the query name and top BLASTn hit.
@@ -11,7 +11,7 @@ Text output stating the query name, protein symbol, and genetic clade. An additi
 ## Usage
 
 ```
-Rscript nn_classifier.R path-to-tree-file
+bash pipeline.sh sample_data/query.fasta
 ```
 
 ## Future Considerations

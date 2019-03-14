@@ -57,7 +57,7 @@ A02430761|gamma	H1	gamma
 A longer example. This main bottleneck is waiting for trees to run in FastTree. A sampling of the output is included, split by `...`.
 
 ```
-bash pipeline sample_data/query.fasta
+bash pipeline.sh sample_data/query.fasta
 
 less query.fasta_Final_Output.txt
 

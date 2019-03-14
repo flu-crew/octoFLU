@@ -9,17 +9,22 @@ set -u
 INPUT=$1
 BASENAME=$(basename $1)
 
+# Connect your reference here
+REFERENCE=sample_data/reference.fa
+
 # Connect your programs here, can use full path names
 BLASTN=~/bin/blastn
+MAKEBLASTDB=~/bin/makeblastdb
 SMOF=~/bin/smof
 MAFFT=`which mafft`
 FASTTREE=~/bin/FastTree
 MICHAEL=nn_classifier.R
 
 # Create your Blast Database
+${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl
 
 # Search your Blast Database
-${BLASTN} -db reference.fa -query $INPUT -num_alignments 1 -outfmt 6 -out ${BASENAME}_output.txt
+${BLASTN} -db ${REFERENCE} -query $INPUT -num_alignments 1 -outfmt 6 -out ${BASENAME}_output.txt
 
 echo "... results in ${BASENAME}_output.txt"
 
@@ -43,7 +48,7 @@ do
     if [ -s ${BASENAME}_${SEG}.ids ]
     then 
 	${SMOF} grep -Xf ${BASENAME}_${SEG}.ids ${INPUT} > ${BASENAME}_${SEG}.fa   # pull out by segment
-	${SMOF} grep "|$SEG|" reference.fa >> ${BASENAME}_${SEG}.fa                # add references
+	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${BASENAME}_${SEG}.fa                # add references
     fi
 done
 

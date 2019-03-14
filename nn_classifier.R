@@ -34,7 +34,7 @@ taxa <- colnames(pdm)
 for (i in 1:length(taxa)) {
   #Check if clade designation is present, skip if so
   defSplit = strsplit(taxa[i],"|", fixed=TRUE)
-  if(length(defSplit[[1]]) >=min(col_annotated)) {       #Assumption! One delimiter (JC: can we make this more robust?)
+  if(length(defSplit[[1]]) >=col_annotated[1]) {       #Assumption! One delimiter (JC: can we make this more robust?)
     next
   }
   
@@ -42,8 +42,7 @@ for (i in 1:length(taxa)) {
   orderedList = sort(pdm[,i])
   for (j in 1:length(orderedList)) {
     compSplit = strsplit(names(orderedList[j]),"|", fixed=TRUE)
-    
-    if(length(compSplit[[1]]) >=min(col_annotated)) {
+    if(length(compSplit[[1]]) >=col_annotated[1]) {
       out_str=taxa[i]
       for (ca in col_annotated){  # print out each column of annotations
         out_str=paste(out_str,compSplit[[1]][ca], sep='\t')

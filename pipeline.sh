@@ -13,12 +13,12 @@ BASENAME=$(basename $1)
 REFERENCE=sample_data/reference.fa
 
 # Connect your programs here, can use full path names
-BLASTN=~/bin/blastn
-MAKEBLASTDB=~/bin/makeblastdb
-SMOF=~/bin/smof
-MAFFT=`which mafft`
-FASTTREE=~/bin/FastTree
-MICHAEL=nn_classifier.R
+BLASTN=/usr/local/bin/blastn
+MAKEBLASTDB=/usr/local/bin/makeblastdb
+SMOF=/usr/local/bin/smof.py
+MAFFT=/usr/local/bin/mafft
+FASTTREE=/usr/local/bin/FastTreeMP
+NN_CLASS=nn_classifier.R
 
 # Create your Blast Database
 ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl
@@ -58,7 +58,7 @@ do
     echo "${SEG}"
     if [ -s ${BASENAME}_${SEG}.ids ]
     then 
-	${MAFFT} --auto ${BASENAME}_${SEG}.fa > ${BASENAME}_${SEG}_aln.fa
+	${MAFFT} --thread -1 --auto ${BASENAME}_${SEG}.fa > ${BASENAME}_${SEG}_aln.fa
 	${FASTTREE} -nt ${BASENAME}_${SEG}_aln.fa > ${BASENAME}_${SEG}.tre
     fi
 done
@@ -68,16 +68,16 @@ touch ${BASENAME}_Final_Output.txt
 rm ${BASENAME}_Final_Output.txt
 touch ${BASENAME}_Final_Output.txt
 
-[ -s ${BASENAME}_H1.ids ] && Rscript ${MICHAEL} ${BASENAME}_H1.tre 5 6 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_H3.ids ] && Rscript ${MICHAEL} ${BASENAME}_H3.tre 5 6 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_N1.ids ] && Rscript ${MICHAEL} ${BASENAME}_N1.tre 5 7 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_N2.ids ] && Rscript ${MICHAEL} ${BASENAME}_N2.tre 5 7 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_PB2.ids ] && Rscript ${MICHAEL} ${BASENAME}_PB2.tre 5 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_PB1.ids ] && Rscript ${MICHAEL} ${BASENAME}_PB1.tre 5 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_PA.ids ] && Rscript ${MICHAEL} ${BASENAME}_PA.tre 5 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_NP.ids ] && Rscript ${MICHAEL} ${BASENAME}_NP.tre 5 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_M.ids ] && Rscript ${MICHAEL} ${BASENAME}_M.tre 5 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${BASENAME}_NS.ids ] && Rscript ${MICHAEL} ${BASENAME}_NS.tre 5 8 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_H1.ids ] && Rscript ${NN_CLASS} ${BASENAME}_H1.tre 4 7 8 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_H3.ids ] && Rscript ${NN_CLASS} ${BASENAME}_H3.tre 4 7 8 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_N1.ids ] && Rscript ${NN_CLASS} ${BASENAME}_N1.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_N2.ids ] && Rscript ${NN_CLASS} ${BASENAME}_N2.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_PB2.ids ] && Rscript ${NN_CLASS} ${BASENAME}_PB2.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_PB1.ids ] && Rscript ${NN_CLASS} ${BASENAME}_PB1.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_PA.ids ] && Rscript ${NN_CLASS} ${BASENAME}_PA.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_NP.ids ] && Rscript ${NN_CLASS} ${BASENAME}_NP.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_M.ids ] && Rscript ${NN_CLASS} ${BASENAME}_M.tre 5 1 >> ${BASENAME}_Final_Output.txt
+[ -s ${BASENAME}_NS.ids ] && Rscript ${NN_CLASS} ${BASENAME}_NS.tre 5 1 >> ${BASENAME}_Final_Output.txt
 
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"
 echo "Tree files are listed below: "

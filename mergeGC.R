@@ -23,6 +23,6 @@ my.data$V3[my.data$V2 %in% ha] <- paste(my.data$V3[my.data$V2 %in% ha], my.data$
 
 tt <- dcast(my.data, V1 ~ V2, value.var="V3")
 tt <- tt[order(tt$V1),c("V1","H1","H3","N1","N2","PB2","PB1","PA","NP","M","NS")]
-tt[is.na(tt)] <- ""
+tt[is.na(tt)] <- "-"
 
 write.table(tt, file = "Merge_Attempt.txt", row.names = FALSE, quote = FALSE, sep = "\t")

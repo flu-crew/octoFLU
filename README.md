@@ -1,4 +1,7 @@
 # Classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin
+
+[![Docker Automated build](https://img.shields.io/docker/automated/j23414/nn_patristic_classifier.svg)](https://hub.docker.com/r/j23414/nn_patristic_classifier/)
+
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
@@ -72,4 +75,13 @@ QUERY_MK129490_A/swine/Illinois/A02170163/2018	M	pdm_EurasianSwOrigin
 QUERY_MK185286_A/swine/Iowa/A02016889/2018	PB1	TRIG_huOrigin 
 QUERY_MK185322_A/swine/Iowa/A02169143/2018	PB1	pdm_TRIGhuOrigin 
 QUERY_MK039744_A/swine/Iowa/A02254795/2018	PB1	TRIG_huOrigin
+```
+
+## Docker Install
+
+Start your docker instance
+
+```
+docker pull j23414/nn_patristic_classifier
+docker run -it nn_patristic_classifier:latest /bin/bash
 ```

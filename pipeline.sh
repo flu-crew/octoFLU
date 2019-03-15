@@ -26,9 +26,9 @@ NN_CLASS=nn_classifier.R
 
 # BLASTN=/usr/local/bin/blastn
 # MAKEBLASTDB=/usr/local/bin/makeblastdb
-SMOF=~/bin/smof
+# SMOF=/usr/local/bin/smof
 # MAFFT=/usr/local/bin/mafft
-FASTTREE=~/bin/FastTree
+# FASTTREE=usr/local/bin/FastTree
 # NN_CLASS=nn_classifier.R
 
 # ===== Check if dependencies are avialable, quit if not

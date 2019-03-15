@@ -13,12 +13,19 @@ BASENAME=$(basename $1)
 REFERENCE=sample_data/reference.fa
 
 # Connect your programs here, can use full path names
-BLASTN=/usr/local/bin/blastn
-MAKEBLASTDB=/usr/local/bin/makeblastdb
-SMOF=/usr/local/bin/smof.py
-MAFFT=/usr/local/bin/mafft
-FASTTREE=/usr/local/bin/FastTreeMP
+BLASTN=blastn
+MAKEBLASTDB=makeblastdb
+SMOF=./smof.py
+MAFFT=mafft
+FASTTREE=./FastTreeMP
 NN_CLASS=nn_classifier.R
+
+# BLASTN=/usr/local/bin/blastn
+# MAKEBLASTDB=/usr/local/bin/makeblastdb
+# SMOF=/usr/local/bin/smof.py
+# MAFFT=/usr/local/bin/mafft
+# FASTTREE=/usr/local/bin/FastTreeMP
+# NN_CLASS=nn_classifier.R
 
 # Create your Blast Database
 ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl

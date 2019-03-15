@@ -22,7 +22,13 @@ Reannotate the tree with NN-clades for ease of use.
 
 ## Running the pipeline
 
-Edit the paths in `pipeline.sh`. You will need to have an installation of NCBI Blast, [smof](https://github.com/incertae-sedis/smof), mafft, FastTree and the included `nn_classifier.R` script.
+Edit the paths in `pipeline.sh`. You will need to have an installation of 
+
+* [NCBI Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download), 
+* [smof](https://github.com/incertae-sedis/smof),
+* [mafft](https://mafft.cbrc.jp/alignment/software/), 
+* [FastTree](http://www.microbesonline.org/fasttree/#Install)
+* and the included `nn_classifier.R` script.
 
 ```
 # Connect your reference dataset here
@@ -43,7 +49,7 @@ Then run the pipeline
 bash pipeline.sh sample_data/query.fasta
 ```
 
-The output will be in a `*_Final_Output.txt` file, any trees generated will be listed and named by protein symbol, and `*_output.txt` includes the query genes and their top BLASTn hit.
+The output will be in a `*_Final_Output.txt` file and `*_output` folder, any trees generated will be listed and named by protein symbol, and `blast_output.txt` includes the query genes and their top BLASTn hit.
 
 The main bottleneck is waiting for trees to run in FastTree (an installation of multi-threaded version helps). A sampling of the output is included, split by `...`.
 
@@ -77,11 +83,20 @@ QUERY_MK185322_A/swine/Iowa/A02169143/2018	PB1	pdm_TRIGhuOrigin
 QUERY_MK039744_A/swine/Iowa/A02254795/2018	PB1	TRIG_huOrigin
 ```
 
-## Docker Install
+## Docker
 
-Start your docker instance
+Start the Docker deamon and navigate to your query file location. 
 
 ```
+cd mydataset/
 docker pull j23414/nn_patristic_classifier
-docker run -it nn_patristic_classifier:latest /bin/bash
+docker run -it -v ${PWD}:/data nn_patristic_classifier:latest /bin/bash
+```
+
+From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.
+
+```
+docker > bash pipeline.sh sample_data/sample2.fasta
+docker > cp -rf sample2.fasta_output /data/.
+docker > exit 
 ```

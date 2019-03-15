@@ -11,9 +11,9 @@ FROM ubuntu:18.04
      RUN gcc -DOPENMP -fopenmp -O3 -finline-functions -funroll-loops -Wall -o FastTreeMP FastTree.c -lm
      RUN ln -s ../smof/smof.py .
      ENV PATH=/:$PATH
-#    CMD ["ln -s cavatica/data/test/*.tsv ."]
-     CMD ls
-#     CMD ["../../code/script.sh"]
-     	 
-	 LABEL author="Jennifer Chang"
-	 LABEL last-update="2019-03-14"
+     
+     CMD ["ls"]
+     CMD ["./pipeline.sh sample_data/sample2.fasta"]
+     
+     LABEL author="Jennifer Chang"
+     LABEL last-update="2019-03-14"

@@ -9,7 +9,8 @@ set -u
 INPUT=$1
 BASENAME=$(basename $1)
 OUTDIR="${BASENAME}_output"
-mkdir ${OUTDIR}
+# ===== Create Output Directory if not already created
+[ -d ${OUTDIR} ] || mkdir ${OUTDIR} 
 
 # ===== Connect your reference here
 REFERENCE=sample_data/reference.fa
@@ -50,7 +51,8 @@ then
 fi
 
 # ===== Create your Blast Database
-${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl
+# ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl      # requires no spaces in header
+${MAKEBLASTDB} -in ${REFERENCE} -dbtype nucl                      # allows spaces in header
 
 # ===== Search your Blast Database
 ${BLASTN} -db ${REFERENCE} -query $INPUT -num_alignments 1 -outfmt 6 -out ${OUTDIR}/blast_output.txt

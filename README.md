@@ -100,3 +100,12 @@ docker > bash pipeline.sh sample_data/sample2.fasta
 docker > cp -rf sample2.fasta_output /data/.
 docker > exit 
 ```
+
+## Singularity
+
+Singularity and Docker are friends. A singularity image can be built using singularity pull. 
+
+
+```
+singularity pull docker://j23414/nn_patristic_classifier
+```

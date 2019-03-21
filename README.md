@@ -24,10 +24,6 @@ Text output stating the query name, protein symbol, and genetic clade. An additi
 ```
 bash pipeline.sh sample_data/query.fasta
 ```
-
-## Future Considerations
-Reannotate the tree with NN-clades for ease of use.
-
 ## Running the pipeline
 
 Edit the paths in `pipeline.sh`. You will need to have an installation of 
@@ -117,3 +113,6 @@ Singularity and Docker are friends. A singularity image can be built using singu
 ```
 singularity pull docker://j23414/nn_patristic_classifier
 ```
+
+## Future Considerations
+Reannotate the tree with NN-clades for ease of use.

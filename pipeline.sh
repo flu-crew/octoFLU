@@ -92,7 +92,7 @@ do
     if [ -s ${OUTDIR}/${SEG}.fa ]
     then 
 	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
-	${FASTTREE} -nt ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre
+	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre
 	rm ${OUTDIR}/${SEG}.fa
     fi
 done

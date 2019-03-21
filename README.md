@@ -5,6 +5,10 @@
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
+This tool has been tested on swine H1 and H3 data, sequence from other serotypes or sequence that is too short  may generate incorrect results. We suggest you use the [IRD Sequence Annotation tool](https://www.fludb.org/brc/influenza_batch_submission.spg?method=NewAnnotation&decorator=influenza) prior to running this pipeline. 
+
+We also recommend that output from the automatic classification be interpreted conservatively, and that more comprehensive phylogenetic analyses may be required for accurate determination of evolutionary history.
+
 If you use this pipeline or the curated reference datasets in your work, please cite:
 
 Chang, J., Anderson, T.K., Zeller, M.A., Gauger, P.C., Vincent, A.L. A pipeline and dataset facilitating the classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin. bioRxiv: XXXX.

@@ -5,6 +5,9 @@
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
+If you use this pipeline or the curated reference datasets in your work, please cite:
+Chang, J., Anderson, T.K., Zeller, M.A., Gauger, P.C., Vincent, A.L. A pipeline and dataset facilitating the classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin. bioRxiv: XXXX.
+
 ## Input
 Unaligned fasta with query sequences (defline without "|").
 

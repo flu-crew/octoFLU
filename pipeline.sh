@@ -91,7 +91,7 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.fa ]
     then 
-	${MAFFT} --thread -1 --auto ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
+	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
 	${FASTTREE} -nt ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre
 	rm ${OUTDIR}/${SEG}.fa
     fi

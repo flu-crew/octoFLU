@@ -116,4 +116,5 @@ singularity pull docker://j23414/nn_patristic_classifier
 ```
 
 ## Future Considerations
-Reannotate the tree with NN-clades for ease of use.
+* Reannotate the tree with NN-clades for ease of use.
+* Integrate the mergeGC.R script to combine gene assignments to a whole genome constellation descriptor.

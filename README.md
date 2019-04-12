@@ -14,10 +14,12 @@ If you use this pipeline or the curated reference datasets in your work, please 
 Chang, J., Anderson, T.K., Zeller, M.A., Gauger, P.C., Vincent, A.L. A pipeline and dataset facilitating the classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin. bioRxiv: XXXX.
 
 ## Input
-Unaligned fasta with query sequences (defline without "|").
+Unaligned fasta with query sequences (e.g., strain name with protein segment identifier).
 
 ## Output
-Text output stating the query name, protein symbol, and genetic clade. An additional output file holds the query name and top BLASTn hit.
+* Text output stating the query name, protein symbol, and genetic clade. 
+* Text output holding the query name and top BLASTn hit. 
+* Inferred maximum likelihood trees with reference gene sets and queries.
 
 ## Usage
 
@@ -75,17 +77,17 @@ QUERY_MH551259_A/swine/Iowa/A02016897/2018			N1	classicalSwine
 QUERY_MH561752_A/swine/Minnesota/A01785574/2018		N1	classicalSwine 
 QUERY_MH551263_A/swine/Minnesota/A02016891/2018		N1	classicalSwine 
 ...
-QUERY_MK024152_A/swine/Minnesota/A01785613/2018		N2	1998_NA_N2 
-QUERY_MH976804_A/swine/Michigan/A01678583/2018		N2	1998_NA_N2 
-QUERY_MH595471_A/swine/South_Dakota/A02170160/2018	N2	2002_NA_N2 
+QUERY_MK024152_A/swine/Minnesota/A01785613/2018		N2	1998 
+QUERY_MH976804_A/swine/Michigan/A01678583/2018		N2	1998
+QUERY_MH595471_A/swine/South_Dakota/A02170160/2018	N2	2002 
 ...
-QUERY_MH922882_A/swine/Ohio/18TOSU4536/2018		M	pdm_EurasianSwOrigin 
-QUERY_MK321295_A/swine/Florida/A01104129/2018	M	pdm_EurasianSwOrigin 
-QUERY_MK129490_A/swine/Illinois/A02170163/2018	M	pdm_EurasianSwOrigin
+QUERY_MH922882_A/swine/Ohio/18TOSU4536/2018		M	pdm 
+QUERY_MK321295_A/swine/Florida/A01104129/2018	M	pdm
+QUERY_MK129490_A/swine/Illinois/A02170163/2018	M	pdm
 ...
-QUERY_MK185286_A/swine/Iowa/A02016889/2018	PB1	TRIG_huOrigin 
-QUERY_MK185322_A/swine/Iowa/A02169143/2018	PB1	pdm_TRIGhuOrigin 
-QUERY_MK039744_A/swine/Iowa/A02254795/2018	PB1	TRIG_huOrigin
+QUERY_MK185286_A/swine/Iowa/A02016889/2018	PB1	TRIG 
+QUERY_MK185322_A/swine/Iowa/A02169143/2018	PB1	pdm
+QUERY_MK039744_A/swine/Iowa/A02254795/2018	PB1	TRIG
 ```
 
 ## Docker

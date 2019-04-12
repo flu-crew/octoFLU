@@ -50,12 +50,15 @@ then
     exit
 fi
 
+# ===== Remove pipes in query header
+cat ${INPUT} | tr '|' '_' > ${BASENAME}.clean
+
 # ===== Create your Blast Database
 # ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl      # requires no spaces in header
 ${MAKEBLASTDB} -in ${REFERENCE} -dbtype nucl                      # allows spaces in header
 
 # ===== Search your Blast Database
-${BLASTN} -db ${REFERENCE} -query $INPUT -num_alignments 1 -outfmt 6 -out ${OUTDIR}/blast_output.txt
+${BLASTN} -db ${REFERENCE} -query ${BASENAME}.clean -num_alignments 1 -outfmt 6 -out ${OUTDIR}/blast_output.txt
 
 echo "... results in ${OUTDIR}/blast_output.txt"
 
@@ -79,7 +82,7 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.ids ]
     then 
-	${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${INPUT} > ${OUTDIR}/${SEG}.fa   # pull out query by segment
+	${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${BASENAME}.clean > ${OUTDIR}/${SEG}.fa   # pull out query by segment
 	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}.fa              # add references
     fi
     rm ${OUTDIR}/${SEG}.ids

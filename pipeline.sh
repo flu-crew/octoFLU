@@ -18,9 +18,9 @@ REFERENCE=sample_data/reference.fa
 # ===== Connect your programs here, assuming installed on your system
 BLASTN=blastn
 MAKEBLASTDB=makeblastdb
-SMOF=./smof.py
+SMOF=smof.py
 MAFFT=mafft
-FASTTREE=./FastTreeMP
+FASTTREE=FastTreeMP
 NN_CLASS=nn_classifier.R
 
 # ===== Uncomment and connect your programs here using full path names
@@ -95,7 +95,7 @@ do
     if [ -s ${OUTDIR}/${SEG}.fa ]
     then 
 	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
-	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre
+	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre # can drop -gtr -gamma for faster results
 	rm ${OUTDIR}/${SEG}.fa
     fi
 done

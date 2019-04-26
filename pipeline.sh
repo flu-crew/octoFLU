@@ -22,6 +22,7 @@ SMOF=smof.py
 MAFFT=mafft
 FASTTREE=FastTreeMP
 NN_CLASS=nn_classifier.R
+ANNOT_FASTA=annotate_headers.pl
 
 # ===== Uncomment and connect your programs here using full path names
 
@@ -31,6 +32,7 @@ NN_CLASS=nn_classifier.R
 # MAFFT=/usr/local/bin/mafft
 # FASTTREE=usr/local/bin/FastTree
 # NN_CLASS=nn_classifier.R
+# ANNOT_FASTA=annotate_headers.pl
 
 # ===== Check if dependencies are avialable, quit if not
 
@@ -43,6 +45,7 @@ echo "===== Dependencies check ====="
 [ -z `which ${MAFFT}` ]       && echo "mafft       .... need to install" && ERR=1 || echo "mafft       .... good"
 [ -z `which ${FASTTREE}` ]    && echo "FastTree    .... need to install" && ERR=1 || echo "FastTree    .... good"
 [ -z `which Rscript` ]        && echo "R           .... need to install" && ERR=1 || echo "R           .... good"
+[ -z `which perl` ]           && echo "Perl        .... need to install" && ERR=1 || echo "Perl        .... good"
 
 if [[ $ERR -eq 1 ]]
 then
@@ -116,7 +119,11 @@ touch ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/NS.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/NS.tre 5 1   >> ${BASENAME}_Final_Output.txt
 cp ${BASENAME}_Final_Output.txt ${OUTDIR}/.
 
+perl ${ANNOT_FASTA} ${BASENAME}_Final_Output.txt ${INPUT} > ${BASENAME}_annot.fasta
+cp ${BASENAME}_annot.fasta ${OUTDIR}/.
+
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"
+echo "==== Annotated fasta in  ${BASENAME}_annot.fasta"
 echo "alignment and tree files in the '${OUTDIR}' folder"
 echo "Tree files are listed below: "
 ls -ltr ${OUTDIR}/*.tre

@@ -35,7 +35,9 @@ Edit the paths in `pipeline.sh`. You will need to have an installation of
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
 * [FastTree](http://www.microbesonline.org/fasttree/#Install)
 * [R](https://www.r-project.org)
-* and the included `nn_classifier.R` script.
+* [Perl](https://www.perl.org)
+* and the included `nn_classifier.R` script
+* and the included `annotate_headers.pl` script
 
 ```
 # Connect your reference dataset here

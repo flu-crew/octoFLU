@@ -1,4 +1,4 @@
-# Automated classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin
+# OctoFLU: Automated classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin
 
 [![Docker Automated build](https://img.shields.io/docker/automated/j23414/nn_patristic_classifier.svg)](https://hub.docker.com/r/j23414/nn_patristic_classifier/)
 

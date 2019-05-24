@@ -11,7 +11,7 @@ We also recommend that output from the automatic classification be interpreted c
 
 If you use this pipeline or the curated reference datasets in your work, please cite:
 
-Chang, J.*, Anderson, T.K.*, Zeller, M.A.*, Gauger, P.C., Vincent, A.L. Automated classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin. bioRxiv: XXXX. *These authors contributed equally.
+Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. Automated classification of influenza A virus gene sequences detected in U.S. swine to evolutionary origin. bioRxiv: XXXX. +These authors contributed equally.
 
 ## Input
 Unaligned fasta with query sequences (e.g., strain name with protein segment identifier).

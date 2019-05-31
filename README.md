@@ -98,7 +98,7 @@ Start the Docker deamon and navigate to your query file location.
 
 ```
 cd mydataset/
-docker pull j23414/nn_patristic_classifier
+docker pull flucrew/octoflu
 docker run -it -v ${PWD}:/data nn_patristic_classifier:latest /bin/bash
 ```
 
@@ -116,7 +116,7 @@ Singularity and Docker are friends. A singularity image can be built using singu
 
 
 ```
-singularity pull docker://j23414/nn_patristic_classifier
+singularity pull docker://flucrew/octoflu
 ```
 
 ## Future Considerations

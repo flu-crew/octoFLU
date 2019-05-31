@@ -34,7 +34,7 @@ ANNOT_FASTA=annotate_headers.pl
 # NN_CLASS=nn_classifier.R
 # ANNOT_FASTA=annotate_headers.pl
 
-# ===== Check if dependencies are avialable, quit if not
+# ===== Check if dependencies are available, quit if not
 
 ERR=0
 

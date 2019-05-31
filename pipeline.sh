@@ -107,10 +107,10 @@ done
 [[ -f ${BASENAME}_Final_Output.txt ]] && rm ${BASENAME}_Final_Output.txt
 touch ${BASENAME}_Final_Output.txt
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
-# the H1 gene at pipe 4, the US HA clade at pipe 7, and the Global HA clade at pipe 8.
+# the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
 # These positions may be modified, or extended, to return any metadata required.
-[ -s ${OUTDIR}/H1.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H1.tre 4 7 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/H3.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H3.tre 4 7 8 >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/H1.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H1.tre 5 1 8 >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/H3.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H3.tre 5 1 8 >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/N1.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/N1.tre 5 1   >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/N2.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/N2.tre 5 1   >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/PB2.tre ] && Rscript ${NN_CLASS} ${OUTDIR}/PB2.tre 5 1  >> ${BASENAME}_Final_Output.txt

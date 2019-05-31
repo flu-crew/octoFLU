@@ -121,36 +121,36 @@ touch ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/NS.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/NS.tre 5 1   >> ${BASENAME}_Final_Output.txt
 cp ${BASENAME}_Final_Output.txt ${OUTDIR}/.
 
-perl ${ANNOT_FASTA} ${BASENAME}_Final_Output.txt ${INPUT} > ${BASENAME}_annot.fasta
-cp ${BASENAME}_annot.fasta ${OUTDIR}/.
+# perl ${ANNOT_FASTA} ${BASENAME}_Final_Output.txt ${INPUT} > ${BASENAME}_annot.fasta
+# cp ${BASENAME}_annot.fasta ${OUTDIR}/.
 
 # Annotated Trees
 # Fast part, separating out the sequences and adding references
-for SEG in "${ARR[@]}"
-do
-    echo "${SEG}"
-    if [ -s ${OUTDIR}/${SEG}.tre ]
-    then 
-	${SMOF} grep "|$SEG|" ${BASENAME}_annot.fasta >> ${OUTDIR}/${SEG}_annot.fa   # add annotated query
-	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}_annot.fa              # add references
-    fi
-done
-
-# Slow part, building the alignment and tree
-for SEG in "${ARR[@]}"
-do
-    echo "${SEG}"
-    if [ -s ${OUTDIR}/${SEG}_annot.fa ]
-    then 
-	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}_annot.fa > ${OUTDIR}/${SEG}_annot_aln.fa
-	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_annot_aln.fa > ${OUTDIR}/${SEG}_annot.tre # can drop -gtr -gamma for faster results
-	rm ${OUTDIR}/${SEG}_annot.fa
-    fi
-done
+# for SEG in "${ARR[@]}"
+# do
+#     echo "${SEG}"
+#     if [ -s ${OUTDIR}/${SEG}.tre ]
+#     then 
+# 	${SMOF} grep "|$SEG|" ${BASENAME}_annot.fasta >> ${OUTDIR}/${SEG}_annot.fa   # add annotated query
+# 	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}_annot.fa              # add references
+#     fi
+# done
+# 
+# # Slow part, building the alignment and tree
+# for SEG in "${ARR[@]}"
+# do
+#     echo "${SEG}"
+#     if [ -s ${OUTDIR}/${SEG}_annot.fa ]
+#     then 
+# 	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}_annot.fa > ${OUTDIR}/${SEG}_annot_aln.fa
+# 	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_annot_aln.fa > ${OUTDIR}/${SEG}_annot.tre # can drop -gtr -gamma for faster results
+# 	rm ${OUTDIR}/${SEG}_annot.fa
+#     fi
+# done
 
 
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"
-echo "==== Annotated fasta in  ${BASENAME}_annot.fasta"
+# echo "==== Annotated fasta in  ${BASENAME}_annot.fasta"
 echo "alignment and tree files in the '${OUTDIR}' folder"
 echo "Tree files are listed below: "
 ls -ltr ${OUTDIR}/*.tre

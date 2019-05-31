@@ -22,7 +22,7 @@ SMOF=smof.py
 MAFFT=mafft
 FASTTREE=FastTreeMP
 NN_CLASS=nn_classifier.R
-ANNOT_FASTA=annotate_headers.pl
+# ANNOT_FASTA=annotate_headers.pl
 
 # ===== Uncomment and connect your programs here using full path names
 

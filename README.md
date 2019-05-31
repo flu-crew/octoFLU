@@ -99,7 +99,7 @@ Start the Docker deamon and navigate to your query file location.
 ```
 cd mydataset/
 docker pull flucrew/octoflu
-docker run -it -v ${PWD}:/data nn_patristic_classifier:latest /bin/bash
+docker run -it -v ${PWD}:/data octoflu:latest /bin/bash
 ```
 
 From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.

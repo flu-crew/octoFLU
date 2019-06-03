@@ -17,7 +17,7 @@ Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. OctoFLU:
 Unaligned fasta with query sequences (e.g., strain name with protein segment identifier).
 
 ## Output
-* Text output stating the query name, protein symbol, and genetic clade. 
+* Text output stating the query name, protein symbol, genetic clade or evolutionary lineage. 
 * Text output holding the query name and top BLASTn hit. 
 * Inferred maximum likelihood trees with reference gene sets and queries.
 
@@ -34,7 +34,7 @@ Edit the paths in `pipeline.sh`. You will need to have an installation of
 * [smof](https://github.com/incertae-sedis/smof),
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
 * [FastTree](http://www.microbesonline.org/fasttree/#Install)
-* [R](https://www.r-project.org)
+* [R](https://www.r-project.org) with the `ape package` installed
 * [Perl](https://www.perl.org)
 * and the included `nn_classifier.R` script
 * and the included `annotate_headers.pl` script

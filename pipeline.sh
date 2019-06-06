@@ -13,7 +13,7 @@ OUTDIR="${BASENAME}_output"
 [ -d ${OUTDIR} ] || mkdir ${OUTDIR} 
 
 # ===== Connect your reference here
-REFERENCE=sample_data/reference.fa
+REFERENCE=reference_data/reference.fa
 
 # ===== Connect your programs here, assuming installed on your system
 BLASTN=blastn

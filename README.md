@@ -1,4 +1,4 @@
-# OctoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
+# octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
 
@@ -9,9 +9,9 @@ This tool has been tested on swine H1 and H3 data, sequence from other serotypes
 
 We also recommend that output from the automatic classification be interpreted conservatively, and that more comprehensive phylogenetic analyses may be required for accurate determination of evolutionary history.
 
-If you use this pipeline or the curated reference datasets in your work, please cite:
+If you use this pipeline or the curated reference datasets in your work, please cite this:
 
-Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. OctoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. bioRxiv: XXXX. +These authors contributed equally.
+Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. OctoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. +These authors contributed equally.
 
 ## Input
 Unaligned fasta with query sequences (e.g., strain name with protein segment identifier).
@@ -24,7 +24,7 @@ Unaligned fasta with query sequences (e.g., strain name with protein segment ide
 ## Usage
 
 ```
-bash pipeline.sh sample_data/query.fasta
+bash pipeline.sh sample_data/query_sample.fasta
 ```
 ## Running the pipeline
 
@@ -41,7 +41,7 @@ Edit the paths in `pipeline.sh`. You will need to have an installation of
 
 ```
 # Connect your reference dataset here
-REFERENCE=sample_data/reference.fa
+REFERENCE=reference_data/reference.fa
 
 # Connect your programs here, can use full path names
 BLASTN=~/bin/blastn
@@ -55,7 +55,7 @@ NN_CLASS=nn_classifier.R
 Then run the pipeline
 
 ```
-bash pipeline.sh sample_data/query.fasta
+bash pipeline.sh sample_data/query_sample.fasta
 ```
 
 The output will be in a `*_Final_Output.txt` file and `*_output` folder, any trees generated will be listed and named by protein symbol, and `blast_output.txt` includes the query genes and their top BLASTn hit.
@@ -105,8 +105,8 @@ docker run -it -v ${PWD}:/data octoflu:latest /bin/bash
 From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.
 
 ```
-docker > bash pipeline.sh sample_data/sample2.fasta
-docker > cp -rf sample2.fasta_output /data/.
+docker > bash pipeline.sh sample_data/query_sample.fasta
+docker > cp -rf query_sample.fasta_output /data/.
 docker > exit 
 ```
 

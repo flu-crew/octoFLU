@@ -44,8 +44,9 @@ echo "===== Dependencies check ====="
 [ -z `which ${SMOF}` ]        && echo "smof.py     .... need to install" && ERR=1 || echo "smof        .... good"
 [ -z `which ${MAFFT}` ]       && echo "mafft       .... need to install" && ERR=1 || echo "mafft       .... good"
 [ -z `which ${FASTTREE}` ]    && echo "FastTree    .... need to install" && ERR=1 || echo "FastTree    .... good"
-[ -z `which Rscript` ]        && echo "R           .... need to install" && ERR=1 || echo "R           .... good"
-[ -z `which perl` ]           && echo "Perl        .... need to install" && ERR=1 || echo "Perl        .... good"
+[ -z `which Rscript` ]        && echo "Rscript     .... need to install" && ERR=1 || echo "Rscript     .... good"
+[ -z `which perl` ]           && echo "perl        .... need to install" && ERR=1 || echo "perl        .... good"
+[ -z `which python3` ]        && echo "python3     .... need to install" && ERR=1 || echo "python3     .... good"
 
 if [[ $ERR -eq 1 ]]
 then
@@ -85,8 +86,8 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.ids ]
     then 
-	${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${BASENAME}.clean > ${OUTDIR}/${SEG}.fa   # pull out query by segment
-	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}.fa              # add references
+	python3 ${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${BASENAME}.clean > ${OUTDIR}/${SEG}.fa   # pull out query by segment
+	python3 ${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}.fa              # add references
     fi
     rm ${OUTDIR}/${SEG}.ids
 done

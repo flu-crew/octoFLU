@@ -3,7 +3,7 @@ FROM ubuntu:18.04
      RUN apt-get -y update && apt-get install -y git && apt-get -y install mafft && apt-get -y install emacs
      RUN apt-get -y install ncbi-blast+ && apt-get -y install curl
      RUN git clone "https://github.com/flu-crew/octoFLU.git" octoFLU
-     RUN git clone https://github.com/incertae-sedis/smof.git
+     RUN git clone "https://github.com/incertae-sedis/smof.git" smof
      RUN DEBIAN_FRONTEND=noninteractive apt-get install -y r-base && echo "install.packages(\"ape\", repos=\"https://cran.rstudio.com\")" | R --no-save
      WORKDIR /octoFLU/
      RUN curl -O http://www.microbesonline.org/fasttree/FastTree.c
@@ -13,7 +13,7 @@ FROM ubuntu:18.04
      ENV PATH=/:$PATH
      
      CMD ["ls"]
-     CMD ["./pipeline.sh sample_data/query.fasta"]
-     
+     CMD ["./pipeline.sh sample_data/query_sample.fasta"]
+
      LABEL author="Jennifer Chang"
-     LABEL last-update="2019-03-14"
+     LABEL last-update="2019-06-14"

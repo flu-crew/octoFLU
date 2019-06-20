@@ -105,9 +105,9 @@ docker run -it -v ${PWD}:/data octoflu:latest /bin/bash
 From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.
 
 ```
-docker > bash pipeline.sh sample_data/query_sample.fasta
-docker > cp -rf query_sample.fasta_output /data/.
-docker > exit 
+bash pipeline.sh sample_data/query_sample.fasta
+cp -rf query_sample.fasta_output /data/.
+exit 
 ```
 
 ## Singularity

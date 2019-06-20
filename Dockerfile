@@ -13,7 +13,7 @@ FROM ubuntu:18.04
      ENV PATH=/:$PATH
      
      CMD ["ls"]
-     CMD ["./pipeline.sh sample_data/query_sample.fasta"]
+#     CMD ["./pipeline.sh sample_data/query_sample.fasta"]
 
      LABEL author="Jennifer Chang"
      LABEL last-update="2019-06-14"

@@ -18,14 +18,12 @@ REFERENCE=reference_data/reference.fa
 # ===== Connect your programs here, assuming installed on your system
 BLASTN=blastn
 MAKEBLASTDB=makeblastdb
-SMOF=smof.py
+SMOF=smof
 MAFFT=mafft
 FASTTREE=FastTreeMP
 NN_CLASS=nn_classifier.R
-# ANNOT_FASTA=annotate_headers.pl
 
 # ===== Uncomment and connect your programs here using full path names
-
 # BLASTN=/usr/local/bin/blastn
 # MAKEBLASTDB=/usr/local/bin/makeblastdb
 # SMOF=/usr/local/bin/smof
@@ -41,12 +39,11 @@ ERR=0
 echo "===== Dependencies check ====="
 [ -z `which ${BLASTN}` ]      && echo "blastn      .... need to install" && ERR=1 || echo "blastn      .... good"
 [ -z `which ${MAKEBLASTDB}` ] && echo "makeblastdb .... need to install" && ERR=1 || echo "makeblastdb .... good"
-[ -z `which ${SMOF}` ]        && echo "smof.py     .... need to install" && ERR=1 || echo "smof        .... good"
 [ -z `which ${MAFFT}` ]       && echo "mafft       .... need to install" && ERR=1 || echo "mafft       .... good"
 [ -z `which ${FASTTREE}` ]    && echo "FastTree    .... need to install" && ERR=1 || echo "FastTree    .... good"
-[ -z `which Rscript` ]        && echo "Rscript     .... need to install" && ERR=1 || echo "Rscript     .... good"
-#[ -z `which perl` ]           && echo "perl        .... need to install" && ERR=1 || echo "perl        .... good"
 [ -z `which python3` ]        && echo "python3     .... need to install" && ERR=1 || echo "python3     .... good"
+[ -z `which ${SMOF}` ]        && echo "smof        .... need to install" && ERR=1 && pip install smof || echo "smof        .... good"
+[ -z `which Rscript` ]        && echo "Rscript     .... need to install" && ERR=1 || echo "Rscript     .... good"
 
 if [[ $ERR -eq 1 ]]
 then
@@ -86,8 +83,8 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.ids ]
     then 
-	python3 ${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${BASENAME}.clean > ${OUTDIR}/${SEG}.fa   # pull out query by segment
-	python3 ${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}.fa              # add references
+	${SMOF} grep -Xf ${OUTDIR}/${SEG}.ids ${BASENAME}.clean > ${OUTDIR}/${SEG}.fa   # pull out query by segment
+	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}.fa              # add references
     fi
     rm ${OUTDIR}/${SEG}.ids
 done
@@ -122,36 +119,7 @@ touch ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/NS.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/NS.tre 5 1   >> ${BASENAME}_Final_Output.txt
 cp ${BASENAME}_Final_Output.txt ${OUTDIR}/.
 
-# perl ${ANNOT_FASTA} ${BASENAME}_Final_Output.txt ${INPUT} > ${BASENAME}_annot.fasta
-# cp ${BASENAME}_annot.fasta ${OUTDIR}/.
-
-# Annotated Trees
-# Fast part, separating out the sequences and adding references
-# for SEG in "${ARR[@]}"
-# do
-#     echo "${SEG}"
-#     if [ -s ${OUTDIR}/${SEG}.tre ]
-#     then 
-# 	${SMOF} grep "|$SEG|" ${BASENAME}_annot.fasta >> ${OUTDIR}/${SEG}_annot.fa   # add annotated query
-# 	${SMOF} grep "|$SEG|" ${REFERENCE} >> ${OUTDIR}/${SEG}_annot.fa              # add references
-#     fi
-# done
-# 
-# # Slow part, building the alignment and tree
-# for SEG in "${ARR[@]}"
-# do
-#     echo "${SEG}"
-#     if [ -s ${OUTDIR}/${SEG}_annot.fa ]
-#     then 
-# 	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}_annot.fa > ${OUTDIR}/${SEG}_annot_aln.fa
-# 	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_annot_aln.fa > ${OUTDIR}/${SEG}_annot.tre # can drop -gtr -gamma for faster results
-# 	rm ${OUTDIR}/${SEG}_annot.fa
-#     fi
-# done
-
-
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"
-# echo "==== Annotated fasta in  ${BASENAME}_annot.fasta"
 echo "alignment and tree files in the '${OUTDIR}' folder"
 echo "Tree files are listed below: "
 ls -ltr ${OUTDIR}/*.tre

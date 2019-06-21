@@ -5,13 +5,13 @@
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
-This tool has been tested on swine H1 and H3 data, sequence from other serotypes or sequence that is too short  may generate incorrect results. We suggest you use the [IRD Sequence Annotation tool](https://www.fludb.org/brc/influenza_batch_submission.spg?method=NewAnnotation&decorator=influenza) prior to running this pipeline. 
+This tool has been tested on swine H1 and H3 data (i.e., collected from 2010 to present), sequence from other serotypes, sequence that is too short, or sequence that is collected from outside North America may generate incorrect results. We suggest you use the [IRD Sequence Annotation tool](https://www.fludb.org/brc/influenza_batch_submission.spg?method=NewAnnotation&decorator=influenza) prior to running this pipeline. 
 
-We also recommend that output from the automatic classification be interpreted conservatively, and that more comprehensive phylogenetic analyses may be required for accurate determination of evolutionary history.
+We also recommend that output from the automatic classification be interpreted conservatively, and that more comprehensive phylogenetic analyses may be required for accurate determination of evolutionary history. This pipeline generates a phylogeny using a limited set of reference sequences and annotates the queries based upon the "nearest neighbor." If query sequences are very dissimilar to the annotated reference set (e.g., swine H1 sequence from the 1990s, or swine data collected in Euope or Asia) they are likely to be misclassified.
 
 If you use this pipeline or the curated reference datasets in your work, please cite this:
 
-Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. OctoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. +These authors contributed equally.
+Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. +These authors contributed equally.
 
 ## Input
 Unaligned fasta with query sequences (e.g., strain name with protein segment identifier).
@@ -35,9 +35,7 @@ Edit the paths in `pipeline.sh`. You will need to have an installation of
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
 * [FastTree](http://www.microbesonline.org/fasttree/#Install)
 * [R](https://www.r-project.org) with the `ape package` installed
-* [Perl](https://www.perl.org)
 * and the included `nn_classifier.R` script
-* and the included `annotate_headers.pl` script
 
 ```
 # Connect your reference dataset here
@@ -99,15 +97,15 @@ Start the Docker deamon and navigate to your query file location.
 ```
 cd mydataset/
 docker pull flucrew/octoflu
-docker run -it -v ${PWD}:/data octoflu:latest /bin/bash
+docker run -it -v ${PWD}:/data flucrew/octoflu:latest /bin/bash
 ```
 
 From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.
 
 ```
-docker > bash pipeline.sh sample_data/query_sample.fasta
-docker > cp -rf query_sample.fasta_output /data/.
-docker > exit 
+bash pipeline.sh sample_data/query_sample.fasta
+cp -rf query_sample.fasta_output /data/.
+exit 
 ```
 
 ## Singularity

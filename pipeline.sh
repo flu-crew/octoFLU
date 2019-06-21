@@ -45,7 +45,7 @@ echo "===== Dependencies check ====="
 [ -z `which ${MAFFT}` ]       && echo "mafft       .... need to install" && ERR=1 || echo "mafft       .... good"
 [ -z `which ${FASTTREE}` ]    && echo "FastTree    .... need to install" && ERR=1 || echo "FastTree    .... good"
 [ -z `which Rscript` ]        && echo "Rscript     .... need to install" && ERR=1 || echo "Rscript     .... good"
-[ -z `which perl` ]           && echo "perl        .... need to install" && ERR=1 || echo "perl        .... good"
+#[ -z `which perl` ]           && echo "perl        .... need to install" && ERR=1 || echo "perl        .... good"
 [ -z `which python3` ]        && echo "python3     .... need to install" && ERR=1 || echo "python3     .... good"
 
 if [[ $ERR -eq 1 ]]

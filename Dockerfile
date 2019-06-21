@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
      RUN apt-get -y update && apt-get install -y git && apt-get -y install mafft && apt-get -y install emacs
-     RUN apt-get -y install ncbi-blast+ && apt-get -y install curl
+     RUN apt-get -y install ncbi-blast+ && apt-get -y install curl && apt-get -y install python3-pip
      RUN git clone "https://github.com/flu-crew/octoFLU.git" octoFLU
 #     RUN git clone "https://github.com/incertae-sedis/smof.git" smof
      RUN pip install smof
@@ -17,4 +17,4 @@ FROM ubuntu:18.04
 #     CMD ["./pipeline.sh sample_data/query_sample.fasta"]
 
      LABEL author="Jennifer Chang"
-     LABEL last-update="2019-06-14"
+     LABEL last-update="2019-06-21"

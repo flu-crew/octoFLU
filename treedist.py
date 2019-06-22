@@ -5,6 +5,8 @@ Created on Fri Jun 21 21:25:20 2019
 @author: Mazeller
 """
 
+import sys
+import getopt
 import dendropy
 from collections import OrderedDict
 from operator import itemgetter   
@@ -62,7 +64,7 @@ def main():
 		defSplit = str(taxon1).split("|")
 		if(len(defSplit) >= max(columnAnnotated)):	#Assumption! One delimiter (JC: can we make this more robust?) 
 			continue
-		print(str(taxon1))
+		#print(str(taxon1))
 		
 		#Find the nearest neighbor with a clade label otherwise. Starting at index 1 incase 100% identity label match
 		dist = pdma._data[str(taxon1)[1:-1]]
@@ -70,7 +72,7 @@ def main():
 		for distance in orderedDist:
 			compSplit = distance.split("|")
 			if(len(compSplit) >= max(columnAnnotated)):	
-				outString = ""
+				outString = str(taxon1)[1:-1].replace(" ","_") + "\t"
 				for i in columnAnnotated:
 					outString += compSplit[i - 1] + "\t" 	#Index shift, minus 1 (probably could use map instead of for)
 				print(outString)

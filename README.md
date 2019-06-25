@@ -31,11 +31,12 @@ bash pipeline.sh sample_data/query_sample.fasta
 
 ```
 pip install smof
-python3 -m pip install -U dendropy 
-(or conda install -c bioconda dendropy)
+python3 -m pip install -U dendropy
 git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
+We have also used the anaconda distribution, and the dendropy module may be installed using conda install -c bioconda dendropy
+
 
 ## Running the pipeline
 

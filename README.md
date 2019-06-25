@@ -31,6 +31,7 @@ bash pipeline.sh sample_data/query_sample.fasta
 
 ```
 pip install smof
+pip install dendropy
 git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
@@ -42,7 +43,8 @@ You will need to have an installation of:
 * [NCBI Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download), 
 * [smof](https://github.com/incertae-sedis/smof),
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
-* [FastTree](http://www.microbesonline.org/fasttree/#Install)
+* [FastTree](http://www.microbesonline.org/fasttree/#Install),
+* [dendropy](https://dendropy.org/downloading.html),
 * and the included `treedist.py` script
 
 Edit the paths in `pipeline.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.

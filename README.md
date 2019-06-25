@@ -26,9 +26,18 @@ Unaligned fasta with query sequences (e.g., strain name with protein segment ide
 ```
 bash pipeline.sh sample_data/query_sample.fasta
 ```
+
+## Installation
+
+```
+pip install smof
+git clone https://github.com/flu-crew/octoFLU.git
+cd octoFLU
+```
+
 ## Running the pipeline
 
-Edit the paths in `pipeline.sh`. You will need to have an installation of 
+You will need to have an installation of:
 
 * [NCBI Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download), 
 * [smof](https://github.com/incertae-sedis/smof),
@@ -36,6 +45,8 @@ Edit the paths in `pipeline.sh`. You will need to have an installation of
 * [FastTree](http://www.microbesonline.org/fasttree/#Install)
 * [R](https://www.r-project.org) with the `ape package` installed
 * and the included `nn_classifier.R` script
+
+Edit the paths in `pipeline.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.
 
 ```
 # Connect your reference dataset here
@@ -106,6 +117,22 @@ From inside the docker image you should be able to run the pipeline. Remember to
 bash pipeline.sh sample_data/query_sample.fasta
 cp -rf query_sample.fasta_output /data/.
 exit 
+```
+
+If you want to run your own dataset (example `mydataset/myseqs.fasta`).
+
+```
+cd mydataset
+docker run -it -v ${PWD}:/data flucrew/octoflu:latest /bin/bash
+bash pipeline.sh /data/myseqs.fasta
+```
+
+After octoFLU is done running copy data outside of docker
+
+```
+cp myseqs.fasta_output /data/.
+exit
+cd myseqs.fasta_output
 ```
 
 ## Singularity

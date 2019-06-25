@@ -21,7 +21,7 @@ MAKEBLASTDB=makeblastdb
 SMOF=smof
 MAFFT=mafft
 FASTTREE=FastTreeMP
-NN_CLASS=nn_classifier.R
+NN_CLASS=treedist.py
 
 # ===== Uncomment and connect your programs here using full path names
 # BLASTN=/usr/local/bin/blastn
@@ -42,8 +42,7 @@ echo "===== Dependencies check ====="
 [ -z `which ${MAFFT}` ]       && echo "mafft       .... need to install" && ERR=1 || echo "mafft       .... good"
 [ -z `which ${FASTTREE}` ]    && echo "FastTree    .... need to install" && ERR=1 || echo "FastTree    .... good"
 [ -z `which python3` ]        && echo "python3     .... need to install" && ERR=1 || echo "python3     .... good"
-[ -z `which ${SMOF}` ]        && echo "smof        .... need to install" && ERR=1 && pip install smof || echo "smof        .... good"
-[ -z `which Rscript` ]        && echo "Rscript     .... need to install" && ERR=1 || echo "Rscript     .... good"
+[ -z `which ${SMOF}` ]        && echo "smof        .... need to install" && ERR=1 || echo "smof        .... good"
 
 if [[ $ERR -eq 1 ]]
 then
@@ -107,16 +106,16 @@ touch ${BASENAME}_Final_Output.txt
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
 # the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
 # These positions may be modified, or extended, to return any metadata required.
-[ -s ${OUTDIR}/H1.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H1.tre 5 1 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/H3.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/H3.tre 5 1 8 >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/N1.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/N1.tre 5 1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/N2.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/N2.tre 5 1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PB2.tre ] && Rscript ${NN_CLASS} ${OUTDIR}/PB2.tre 5 1  >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PB1.tre ] && Rscript ${NN_CLASS} ${OUTDIR}/PB1.tre 5 1  >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PA.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/PA.tre 5 1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/NP.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/NP.tre 5 1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/M.tre ]   && Rscript ${NN_CLASS} ${OUTDIR}/M.tre 5 1    >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/NS.tre ]  && Rscript ${NN_CLASS} ${OUTDIR}/NS.tre 5 1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/H1.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/H1.tre -c 5,1,8 >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/H3.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/H3.tre -c 5,1,8 >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/N1.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/N1.tre -c 5,1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/N2.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/N2.tre -c 5,1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PB2.tre ] && python ${NN_CLASS} -i ${OUTDIR}/PB2.tre -c 5,1  >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PB1.tre ] && python ${NN_CLASS} -i ${OUTDIR}/PB1.tre -c 5,1  >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PA.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/PA.tre -c 5,1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/NP.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/NP.tre -c 5,1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/M.tre ]   && python ${NN_CLASS} -i ${OUTDIR}/M.tre -c 5,1    >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/NS.tre ]  && python ${NN_CLASS} -i ${OUTDIR}/NS.tre -c 5,1   >> ${BASENAME}_Final_Output.txt
 cp ${BASENAME}_Final_Output.txt ${OUTDIR}/.
 
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"

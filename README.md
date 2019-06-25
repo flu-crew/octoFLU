@@ -43,8 +43,7 @@ You will need to have an installation of:
 * [smof](https://github.com/incertae-sedis/smof),
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
 * [FastTree](http://www.microbesonline.org/fasttree/#Install)
-* [R](https://www.r-project.org) with the `ape package` installed
-* and the included `nn_classifier.R` script
+* and the included `treedist.py` script
 
 Edit the paths in `pipeline.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.
 

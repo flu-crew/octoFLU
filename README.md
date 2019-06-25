@@ -61,7 +61,7 @@ MAKEBLASTDB=~/bin/makeblastdb
 SMOF=~/bin/smof
 MAFFT=`which mafft`
 FASTTREE=~/bin/FastTree
-NN_CLASS=nn_classifier.R
+NN_CLASS=treedist.py
 ```
 
 Then run the pipeline
@@ -122,7 +122,7 @@ cp -rf query_sample.fasta_output /data/.
 exit 
 ```
 
-If you want to run your own dataset (example `mydataset/myseqs.fasta`).
+If you want to run your own dataset, hold the data in a fasta file (e.g., `mydataset/myseqs.fasta`).
 
 ```
 cd mydataset
@@ -130,7 +130,7 @@ docker run -it -v ${PWD}:/data flucrew/octoflu:latest /bin/bash
 bash pipeline.sh /data/myseqs.fasta
 ```
 
-After octoFLU is done running copy data outside of docker
+After octoFLU is finished running copy data outside of docker
 
 ```
 cp myseqs.fasta_output /data/.
@@ -149,5 +149,5 @@ singularity pull docker://flucrew/octoflu
 
 ## Future Considerations
 * Reannotate the tree with NN-clades for ease of use.
-* Integrate the mergeGC.R script to combine gene assignments to a whole genome constellation descriptor.
+* Integrate a script to combine gene assignments to a whole genome constellation descriptor.
 * Annotate input sequences with gene classification, and use these designations in the inferred phylogenetic trees.

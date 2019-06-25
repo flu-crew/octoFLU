@@ -31,9 +31,12 @@ bash pipeline.sh sample_data/query_sample.fasta
 
 ```
 pip install smof
+python3 -m pip install -U dendropy
 git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
+We have also used the anaconda distribution, and the dendropy module may be installed using conda install -c bioconda dendropy. Pip is a good thing to install too: https://pip.pypa.io/en/latest/installing/ 
+
 
 ## Running the pipeline
 
@@ -42,9 +45,9 @@ You will need to have an installation of:
 * [NCBI Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download), 
 * [smof](https://github.com/incertae-sedis/smof),
 * [mafft](https://mafft.cbrc.jp/alignment/software/), 
-* [FastTree](http://www.microbesonline.org/fasttree/#Install)
-* [R](https://www.r-project.org) with the `ape package` installed
-* and the included `nn_classifier.R` script
+* [FastTree](http://www.microbesonline.org/fasttree/#Install),
+* [dendropy](https://dendropy.org/downloading.html),
+* and the included `treedist.py` script
 
 Edit the paths in `pipeline.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.
 

@@ -35,7 +35,7 @@ python3 -m pip install -U dendropy
 git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
-We have also used the anaconda distribution, and the dendropy module may be installed using conda install -c bioconda dendropy
+We have also used the anaconda distribution, and the dendropy module may be installed using conda install -c bioconda dendropy. Pip is a good thing to install too: https://pip.pypa.io/en/latest/installing/ 
 
 
 ## Running the pipeline

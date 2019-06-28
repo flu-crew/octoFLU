@@ -30,13 +30,25 @@ bash pipeline.sh sample_data/query_sample.fasta
 ## Installation
 
 ```
-pip install smof
+pip3 install smof
 python3 -m pip install -U dendropy
 git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
-We have also used the anaconda distribution, and the dendropy module may be installed using conda install -c bioconda dendropy. Pip is a good thing to install too: https://pip.pypa.io/en/latest/installing/ 
+## Python
+This pipeline relies upon python3. A majority of MacOS computers ship with an out of date version (Python 2.7), so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bashrc).
 
+The best option is to use [Homebrew](https://brew.sh).
+
+```
+brew install pyenv
+pyenv install 3.7.3
+pyenv global 3.7.3
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+```
+We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda install -c bioconda dendropy. [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.
+
+[This is a very helpful article](https://opensource.com/article/19/5/python-3-default-macos) describing the best approach (towards the bottom) of getting python3 on your Mac
 
 ## Running the pipeline
 

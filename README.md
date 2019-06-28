@@ -44,6 +44,7 @@ The best option is to use [Homebrew](https://brew.sh).
 brew install pyenv
 pyenv install 3.7.3
 pyenv global 3.7.3
+pyenv version
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
 ```
 We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda (e.g., conda install -c bioconda dendropy). [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.

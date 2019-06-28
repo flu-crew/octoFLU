@@ -36,7 +36,7 @@ git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
 ## Python
-This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bashrc).
+This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bash_profile).
 
 The best option is to use [Homebrew](https://brew.sh).
 

@@ -4,6 +4,7 @@
 
 set -e
 set -u
+set -v
 
 # ===== Input and Output
 INPUT=$1
@@ -37,18 +38,20 @@ NN_CLASS=treedist.py
 # Attempt to use python3, but if not there check if python is python3
 PYTHON=python3
 if [ -z `which python3` ]; then
-    PYTHON=python3
-else
     VERCHECK=`python --version | awk -F'.' '{print $1}'`
     [[ ${VERCHECK} == "Python 3" ]] && PYTHON=python || PYTHON=python3
+else
+    PYTHON=python3
 fi
+echo $PYTHON
 
 # Attempt to use multiprocessor version, but if not there use single processor
-if [ -z FastTreeMP ]; then
-    FASTTREE=FastTreeMP
-else
+if [ -z `which FastTreeMP` ]; then
     FASTTREE=FastTree
+else
+    FASTTREE=FastTreeMP
 fi
+echo $FASTTREE
 
 # Formal check of dependencies
 ERR=0
@@ -122,6 +125,7 @@ touch ${BASENAME}_Final_Output.txt
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
 # the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
 # These positions may be modified, or extended, to return any metadata required.
+echo $PYTHON
 [ -s ${OUTDIR}/H1.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/H1.tre -c 5,1,8 >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/H3.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/H3.tre -c 5,1,8 >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/N1.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/N1.tre -c 5,1   >> ${BASENAME}_Final_Output.txt

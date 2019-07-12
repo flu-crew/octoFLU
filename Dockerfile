@@ -6,7 +6,7 @@ RUN git clone "https://github.com/flu-crew/octoFLU.git" octoFLU
 # RUN git clone "https://github.com/incertae-sedis/smof.git" smof
 RUN pip3 install smof
 RUN pip3 install dendropy
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y r-base && echo "install.packages(\"ape\", repos=\"https://cran.rstudio.com\")" | R --no-save
+#RUN DEBIAN_FRONTEND=noninteractive apt-get install -y r-base && echo "install.packages(\"ape\", repos=\"https://cran.rstudio.com\")" | R --no-save
 WORKDIR /octoFLU/
 RUN curl -O http://www.microbesonline.org/fasttree/FastTree.c
 RUN gcc -O3 -finline-functions -funroll-loops -Wall -o FastTree FastTree.c -lm

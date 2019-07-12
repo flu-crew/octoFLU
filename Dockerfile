@@ -14,6 +14,8 @@ RUN gcc -DOPENMP -fopenmp -O3 -finline-functions -funroll-loops -Wall -o FastTre
 #RUN apt-get install -y fasttree
 RUN mv FastTree /usr/bin/FastTree
 RUN mv FastTreeMP /usr/bin/FastTreeMP
+RUN bash pipeline.sh sample_data/query_sample.fasta
+RUN mv query_sample.fasta_output old_out
 
 # RUN ln -s ../smof/smof.py .
 ENV PATH=/:$PATH

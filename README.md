@@ -1,6 +1,6 @@
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
-[![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
+[![octoFLU-logo](img/octoFLU_Vf-01.png)][![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
 
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.

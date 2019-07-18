@@ -1,5 +1,5 @@
 <p align="center">
-	<src="img/octoFLU_Vf-01.png">
+<img/octoFLU_Vf-01.png>
 </p>
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 

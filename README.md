@@ -1,4 +1,6 @@
-![octoFLU-logo](img/octoFLU_Vf-01.png)
+<p align="center">
+	<src="img/octoFLU_Vf-01.png">
+</p>
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)

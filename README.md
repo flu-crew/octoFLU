@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/flu-crew/octoFLU/blob/master/img/octoFLU_Vf-01.png">
 </p>
-![octoFLUlogo](img/octoFLU_Vf-01.png)
+
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)

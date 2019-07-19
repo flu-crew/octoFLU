@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/flu-crew/octoFLU/blob/master/img/octoFLU_Vf-01.png">
+</p>
+
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
@@ -11,9 +15,11 @@ We also recommend that output from the automatic classification be interpreted c
 
 If you use this pipeline or the curated reference datasets in your work, please cite this:
 
-Chang, J.+, Anderson, T.K.+, Zeller, M.A.+, Gauger, P.C., Vincent, A.L. octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. +These authors contributed equally.
+Chang, J.<sup>+</sup>, Anderson, T.K.<sup>+</sup>, Zeller, M.A.<sup>+</sup>, Gauger, P.C., Vincent, A.L. (in press). octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. *Microbiology Resource Announcements* XX:XX. <sup>+</sup>These authors contributed equally.
 
 If you have problems running the pipeline, please use the Issues feature of github, or e-mail tavis.anderson@usda.gov or jennifer.chang@usda.gov directly.
+
+We thank Jordan Angell (USDA-APHIS, Visual Services) for the design of the octoFLU logo.
  
 
 ## Input

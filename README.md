@@ -19,7 +19,7 @@ Chang, J.<sup>+</sup>, Anderson, T.K.<sup>+</sup>, Zeller, M.A.<sup>+</sup>, Gau
 
 If you have problems running the pipeline, please use the Issues feature of github, or e-mail tavis.anderson@usda.gov or jennifer.chang@usda.gov directly.
 
-We thank Jordan Angell (USDA-APHIS, Visual Services) for the design of the octoFLU logo..
+We thank Jordan Angell (USDA-APHIS, Visual Services) for the design of the octoFLU logo.
  
 
 ## Input

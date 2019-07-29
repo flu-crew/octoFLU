@@ -23,13 +23,13 @@ else:
 reference = "reference_data/reference.fa"
 
 # ===== Connect your programs here, Linux style
-BLASTN = "~/ncbi_blast/blastn"
-MAKEBLASTDB = "~/ncbi_blast/makeblastdb"
+BLASTN = "/Users/michael.zeller/ncbi_blast/blastn"
+MAKEBLASTDB = "/Users/michael.zeller/ncbi_blast/makeblastdb"
 SMOF = "smof"
 MAFFT = "/usr/local/bin/mafft"
-FASTTREE = "/usr/local/bin/FastTree"
-NN_CLASS = "treedist.py""
-PYTHON = "python3"
+FASTTREE = "/Users/michael.zeller/FastTree/FastTree"
+NN_CLASS = "treedist.py"
+PYTHON = "python"
 
 # ===== Windows Style program referencing
 # BLASTN = "E:/lab/tools/ncbi_blast/blastn.exe"
@@ -98,7 +98,7 @@ else:
 	print("smof      .... good")
 	
 if (Err == 1):
-    system.exit("Link or install any of your 'need to install' programs above")
+    sys.exit("Link or install any of your 'need to install' programs above")
 	
 
 # ===== Remove pipes in query header
@@ -181,21 +181,24 @@ for segment in ARR:
 	print(segment)
 	segmentFile = outDir + "/" + segment + ".ids"
 	if os.path.isfile(segmentFile):
-		#Translators note: import smof, do smoffy things owuld be better
-		subprocess.run([SMOF ,"grep" ,"-Xf" , outDir + "/" + segment + ".ids", baseName + ".clean", ">", outDir + "/" + segment + ".fa"], shell = True, check = True)
+		#Translators note: import smof, do smoffy things would be better
+		subprocess.run(SMOF + " grep -Xf " + outDir + "/" + segment + ".ids " + baseName + ".clean" + " > " + outDir + "/" + segment + ".fa", shell = True, check = True)
 		subprocess.run(SMOF + " grep \"|" + segment + "|\" reference_data/reference.fa >> query_sample.fasta_output/" + segment + ".fa", shell = True, check = True) 
 		#Cannot get same style to work
 		#subprocess.check_output([SMOF,"grep","\"|" + segment + "|\"", reference, ">>", outDir + "/" + segment + ".fa"], shell = True)
-	os.remove(outDir + "/" + segment + ".ids")
+	#os.remove(outDir + "/" + segment + ".ids")
 	
 # Slow part, building the alignment and tree; slower from shell spin ups
 for segment in ARR:
 	print(segment)
 	segmentFile = outDir + "/" + segment + ".fa"
 	if os.path.isfile(segmentFile):
-		subprocess.check_output([MAFFT, "--auto", "--reorder", outDir + "/" + segment + ".fa", ">", outDir + "/" + segment + "_aln.fa"], shell = True)
-		subprocess.run([FASTTREE,"-nt","-gtr","-gamma",outDir + "/" + segment + "_aln.fa",">",outDir + "/" + segment + ".tre"], shell = True, check = True) # can drop -gtr -gamma for faster results
-	os.remove(outDir + "/" + segment + ".fa")
+		#subprocess.check_output([MAFFT, "--auto", "--reorder", outDir + "/" + segment + ".fa", ">", outDir + "/" + segment + "_aln.fa"], shell = True)
+		subprocess.check_output(MAFFT + " --auto --reorder " + outDir + "/" + segment + ".fa > " + outDir + "/" + segment + "_aln.fa", shell = True)
+		#subprocess.check_output([FASTTREE,"-nt","-gtr","-gamma",outDir + "/" + segment + "_aln.fa",">",outDir + "/" + segment + ".tre"], shell = True) # can drop -gtr -gamma for faster results
+		subprocess.check_output(FASTTREE + " -nt -gtr -gamma " + outDir + "/" + segment + "_aln.fa" + " > " + outDir + "/" + segment + ".tre", shell = True) # can drop -gtr -gamma for faster results
+		
+	#os.remove(outDir + "/" + segment + ".fa")
 
 # Fast again, pull out clades
 	finalOutputFile = outDir + "/" + segment + "_Final_Output.txt"
@@ -206,7 +209,7 @@ for segment in ARR:
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
 # the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
 # These positions may be modified, or extended, to return any metadata required.
-subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/H1.tre -c 5,1,8 > " + baseName + "_Final_Output.txt", shell = True, check = True)
+subprocess.check_output(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/H1.tre -c 5,1,8 > " + baseName + "_Final_Output.txt", shell = True)
 subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/H3.tre -c 5,1,8 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N1.tre -c 5,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N2.tre -c 5,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
@@ -217,7 +220,7 @@ subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NP.tre -c 5,1 >
 subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/M.tre -c 5,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NS.tre -c 5,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 
-copyfile(baseName + "_Final_Output.txt", outDir + "/" baseName + "_Final_Output.txt")
+copyfile(baseName + "_Final_Output.txt", outDir + "/" + baseName + "_Final_Output.txt")
 
 print("==== Final results in  " + baseName + "_Final_Output.txt")
 print("alignment and tree files in the '" + outDir + "' folder")

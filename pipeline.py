@@ -23,15 +23,15 @@ else:
 reference = "reference_data/reference.fa"
 
 # ===== Connect your programs here, Linux style
-BLASTN = "/Users/michael.zeller/ncbi_blast/blastn"
-MAKEBLASTDB = "/Users/michael.zeller/ncbi_blast/makeblastdb"
+BLASTN = "/usr/local/bin/ncbi_blast/blastn"
+MAKEBLASTDB = "/usr/local/bin/ncbi_blast/makeblastdb"
 SMOF = "smof"
 MAFFT = "/usr/local/bin/mafft"
-FASTTREE = "/Users/michael.zeller/FastTree/FastTree"
+FASTTREE = "/usr/local/bin/FastTree/FastTree"
 NN_CLASS = "treedist.py"
 PYTHON = "python"
 
-# ===== Windows Style program referencing
+# ===== Windows Style program referencing. Reccomend using WHERE to find commands in cmd.exe
 # BLASTN = "E:/lab/tools/ncbi_blast/blastn.exe"
 # MAKEBLASTDB = "E:/lab/tools/ncbi_blast/makeblastdb.exe"
 # SMOF = "E:/Anaconda3/Scripts/smof.exe"
@@ -186,7 +186,7 @@ for segment in ARR:
 		subprocess.run(SMOF + " grep \"|" + segment + "|\" reference_data/reference.fa >> query_sample.fasta_output/" + segment + ".fa", shell = True, check = True) 
 		#Cannot get same style to work
 		#subprocess.check_output([SMOF,"grep","\"|" + segment + "|\"", reference, ">>", outDir + "/" + segment + ".fa"], shell = True)
-	#os.remove(outDir + "/" + segment + ".ids")
+	os.remove(outDir + "/" + segment + ".ids")
 	
 # Slow part, building the alignment and tree; slower from shell spin ups
 for segment in ARR:
@@ -198,7 +198,7 @@ for segment in ARR:
 		#subprocess.check_output([FASTTREE,"-nt","-gtr","-gamma",outDir + "/" + segment + "_aln.fa",">",outDir + "/" + segment + ".tre"], shell = True) # can drop -gtr -gamma for faster results
 		subprocess.check_output(FASTTREE + " -nt -gtr -gamma " + outDir + "/" + segment + "_aln.fa" + " > " + outDir + "/" + segment + ".tre", shell = True) # can drop -gtr -gamma for faster results
 		
-	#os.remove(outDir + "/" + segment + ".fa")
+	os.remove(outDir + "/" + segment + ".fa")
 
 # Fast again, pull out clades
 	finalOutputFile = outDir + "/" + segment + "_Final_Output.txt"

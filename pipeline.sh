@@ -4,7 +4,6 @@
 
 set -e
 set -u
-set -v
 
 # ===== Input and Output
 INPUT=$1
@@ -47,11 +46,12 @@ echo $PYTHON
 
 # Attempt to use multiprocessor version, but if not there use single processor
 if [ -z `which FastTreeMP` ]; then
-    FASTTREE=FastTree
+#    FASTTREE=FastTree   # do nothing
+     echo $FASTTREE
 else
     FASTTREE=FastTreeMP
+    echo $FASTTREE
 fi
-echo $FASTTREE
 
 # Formal check of dependencies
 ERR=0
@@ -69,6 +69,7 @@ then
     exit
 fi
 
+set -v
 # ===== Remove pipes in query header
 cat ${INPUT} | tr '|' '_' > ${BASENAME}.clean
 
@@ -113,7 +114,7 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.fa ]
     then 
-	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
+	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa | grep -v "^Active code" > ${OUTDIR}/${SEG}_aln.fa  # rm active code from window's mafft
 	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre # can drop -gtr -gamma for faster results
 	rm ${OUTDIR}/${SEG}.fa
     fi

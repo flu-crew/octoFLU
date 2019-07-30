@@ -172,13 +172,13 @@ singularity pull docker://flucrew/octoflu
 ```
 
 ## Windows
-A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage. This script can be run directly in cmd.exe or through Anaconda.
+A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `pipeline.sh`. This script can be run directly in cmd.exe or through Anaconda.
 
 ```
 python pipeline.py sample_data/query_sample.fasta
 ```
 
-While the dependencies are the same, linking them will be different.
+While the dependencies are the same, pathing generally works better if it is explicit.
 
 ```
 # ===== Connect your programs here, Linux style
@@ -200,7 +200,7 @@ NN_CLASS = "treedist.py"
 PYTHON = "E:/Anaconda3/python.exe"
 ```
 
-Explicit pathing is needed for anything now in the Windows Path. After using `pip` to install `dendroscope` and `smof`, the path to the `smof` executable can be found using `where smof`.
+Explicit pathing is needed for anything not in the Windows Path. After using `pip` to install `dendroscope` and `smof`, the path to the `smof` executable can be found using `where smof`. Input and output remain unchanged.
 
 There has been known issues involving file encoding, while the file needs to be converted to ANSI to run correctly.
 

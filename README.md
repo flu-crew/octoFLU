@@ -171,6 +171,39 @@ Singularity and Docker are friends. A singularity image can be built using singu
 singularity pull docker://flucrew/octoflu
 ```
 
+## Windows
+A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage. This script can be run directly in cmd.exe or through Anaconda.
+
+```
+python pipeline.py sample_data/query_sample.fasta
+```
+
+While the dependencies are the same, linking them will be different.
+
+```
+# ===== Connect your programs here, Linux style
+# BLASTN = "/usr/local/bin/ncbi_blast/blastn"
+# MAKEBLASTDB = "/usr/local/bin/ncbi_blast/makeblastdb"
+# SMOF = "smof"
+# MAFFT = "/usr/local/bin/mafft"
+# FASTTREE = "/usr/local/bin/FastTree/FastTree"
+# NN_CLASS = "treedist.py"
+# PYTHON = "python"
+
+# ===== Windows Style program referencing. Recommend using WHERE to find commands in cmd.exe
+BLASTN = "E:/lab/tools/ncbi_blast/blastn.exe"
+MAKEBLASTDB = "E:/lab/tools/ncbi_blast/makeblastdb.exe"
+SMOF = "E:/Anaconda3/Scripts/smof.exe"
+MAFFT = "E:/lab/tools/mafft-win/mafft.bat"
+FASTTREE = "E:/lab/tools/FastTree.exe"
+NN_CLASS = "treedist.py"
+PYTHON = "E:/Anaconda3/python.exe"
+```
+
+Explicit pathing is needed for anything now in the Windows Path. After using `pip` to install `dendroscope` and `smof`, the path to the `smof` executable can be found using `where smof`.
+
+There has been known issues involving file encoding, while the file needs to be converted to ANSI to run correctly.
+
 ## Future Considerations
 * Reannotate the tree with NN-clades for ease of use.
 * Integrate a script to combine gene assignments to a whole genome constellation descriptor.

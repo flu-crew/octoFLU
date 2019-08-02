@@ -4,7 +4,6 @@
 
 set -e
 set -u
-set -v
 
 # ===== Input and Output
 INPUT=$1
@@ -17,11 +16,11 @@ OUTDIR="${BASENAME}_output"
 REFERENCE=reference_data/reference.fa
 
 # ===== Connect your programs here, assuming installed on your system
-BLASTN=blastn
-MAKEBLASTDB=makeblastdb
+BLASTN=/Users/michael.zeller/ncbi_blast/blastn
+MAKEBLASTDB=/Users/michael.zeller/ncbi_blast/makeblastdb
 SMOF=smof
 MAFFT=mafft
-FASTTREE=FastTreeMP
+FASTTREE=/Users/michael.zeller/FastTree/FastTree
 NN_CLASS=treedist.py
 
 # ===== Uncomment and connect your programs here using full path names
@@ -36,21 +35,21 @@ NN_CLASS=treedist.py
 # ===== Check if dependencies are available, quit if not
 
 # Attempt to use python3, but if not there check if python is python3
-PYTHON=python3
+PYTHON=python
 if [ -z `which python3` ]; then
     VERCHECK=`python --version | awk -F'.' '{print $1}'`
     [[ ${VERCHECK} == "Python 3" ]] && PYTHON=python || PYTHON=python3
 else
-    PYTHON=python3
+    PYTHON=python
 fi
 echo $PYTHON
 
 # Attempt to use multiprocessor version, but if not there use single processor
-if [ -z `which FastTreeMP` ]; then
-    FASTTREE=FastTree
-else
-    FASTTREE=FastTreeMP
-fi
+# if [ -z `which FastTreeMP` ]; then
+#     FASTTREE=FastTree
+# else
+#     FASTTREE=FastTreeMP
+# fi
 echo $FASTTREE
 
 # Formal check of dependencies

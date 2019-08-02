@@ -16,11 +16,11 @@ OUTDIR="${BASENAME}_output"
 REFERENCE=reference_data/reference.fa
 
 # ===== Connect your programs here, assuming installed on your system
-BLASTN=/Users/michael.zeller/ncbi_blast/blastn
-MAKEBLASTDB=/Users/michael.zeller/ncbi_blast/makeblastdb
+BLASTN=blastn
+MAKEBLASTDB=makeblastdb
 SMOF=smof
 MAFFT=mafft
-FASTTREE=/Users/michael.zeller/FastTree/FastTree
+FASTTREE=FastTreeMP
 NN_CLASS=treedist.py
 
 # ===== Uncomment and connect your programs here using full path names
@@ -35,22 +35,23 @@ NN_CLASS=treedist.py
 # ===== Check if dependencies are available, quit if not
 
 # Attempt to use python3, but if not there check if python is python3
-PYTHON=python
+PYTHON=python3
 if [ -z `which python3` ]; then
     VERCHECK=`python --version | awk -F'.' '{print $1}'`
     [[ ${VERCHECK} == "Python 3" ]] && PYTHON=python || PYTHON=python3
 else
-    PYTHON=python
+    PYTHON=python3
 fi
 echo $PYTHON
 
 # Attempt to use multiprocessor version, but if not there use single processor
-# if [ -z `which FastTreeMP` ]; then
-#     FASTTREE=FastTree
-# else
-#     FASTTREE=FastTreeMP
-# fi
-echo $FASTTREE
+if [ -z `which FastTreeMP` ]; then
+#    FASTTREE=FastTree   # do nothing
+     echo $FASTTREE
+else
+    FASTTREE=FastTreeMP
+    echo $FASTTREE
+fi
 
 # Formal check of dependencies
 ERR=0
@@ -68,6 +69,7 @@ then
     exit
 fi
 
+set -v
 # ===== Remove pipes in query header
 cat ${INPUT} | tr '|' '_' > ${BASENAME}.clean
 
@@ -112,7 +114,7 @@ do
     echo "${SEG}"
     if [ -s ${OUTDIR}/${SEG}.fa ]
     then 
-	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa > ${OUTDIR}/${SEG}_aln.fa
+	${MAFFT} --thread -1 --auto --reorder ${OUTDIR}/${SEG}.fa | grep -v "^Active code" > ${OUTDIR}/${SEG}_aln.fa  # rm active code from window's mafft
 	${FASTTREE} -nt -gtr -gamma ${OUTDIR}/${SEG}_aln.fa > ${OUTDIR}/${SEG}.tre # can drop -gtr -gamma for faster results
 	rm ${OUTDIR}/${SEG}.fa
     fi

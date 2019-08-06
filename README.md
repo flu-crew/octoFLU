@@ -46,22 +46,6 @@ cd octoFLU
 ```
 If you are on linux, you can likely just use pip vs. pip3.
 
-## Python
-This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bash_profile).
-
-The best option is to use [Homebrew](https://brew.sh).
-
-```
-brew install pyenv
-pyenv install 3.7.3
-pyenv global 3.7.3
-pyenv version
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
-```
-We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda (e.g., conda install -c bioconda dendropy). [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.
-
-[This is a very helpful article](https://opensource.com/article/19/5/python-3-default-macos) describing the best approach (towards the bottom) of getting python3 on your Mac
-
 ## Running the pipeline
 
 You will need to have an installation of:
@@ -170,6 +154,23 @@ Singularity and Docker are friends. A singularity image can be built using singu
 ```
 singularity pull docker://flucrew/octoflu
 ```
+
+## Python and MacOS
+This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bash_profile).
+
+The best option is to use [Homebrew](https://brew.sh).
+
+```
+brew install pyenv
+pyenv install 3.7.3
+pyenv global 3.7.3
+pyenv version
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+```
+We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda (e.g., conda install -c bioconda dendropy). [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.
+
+[This is a very helpful article](https://opensource.com/article/19/5/python-3-default-macos) describing the best approach (towards the bottom) of getting python3 on your Mac
+
 
 ## Windows
 A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `pipeline.sh`. This script can be run directly in cmd.exe or through Anaconda.

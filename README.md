@@ -15,7 +15,7 @@ We also recommend that output from the automatic classification be interpreted c
 
 If you use this pipeline or the curated reference datasets in your work, please cite this:
 
-Chang, J.<sup>+</sup>, Anderson, T.K.<sup>+</sup>, Zeller, M.A.<sup>+</sup>, Gauger, P.C., Vincent, A.L. (in press). octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. *Microbiology Resource Announcements* XX:XX. <sup>+</sup>These authors contributed equally.
+Chang, J.<sup>+</sup>, Anderson, T.K.<sup>+</sup>, Zeller, M.A.<sup>+</sup>, Gauger, P.C., Vincent, A.L. (2019). octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. [*Microbiology Resource Announcements* 8:e00673-19](https://doi.org/10.1128/MRA.00673-19). <sup>+</sup>These authors contributed equally.
 
 If you have problems running the pipeline, please use the Issues feature of github, or e-mail tavis.anderson@usda.gov or jennifer.chang@usda.gov directly.
 
@@ -45,22 +45,6 @@ git clone https://github.com/flu-crew/octoFLU.git
 cd octoFLU
 ```
 If you are on linux, you can likely just use pip vs. pip3.
-
-## Python
-This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bash_profile).
-
-The best option is to use [Homebrew](https://brew.sh).
-
-```
-brew install pyenv
-pyenv install 3.7.3
-pyenv global 3.7.3
-pyenv version
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
-```
-We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda (e.g., conda install -c bioconda dendropy). [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.
-
-[This is a very helpful article](https://opensource.com/article/19/5/python-3-default-macos) describing the best approach (towards the bottom) of getting python3 on your Mac
 
 ## Running the pipeline
 
@@ -170,6 +154,23 @@ Singularity and Docker are friends. A singularity image can be built using singu
 ```
 singularity pull docker://flucrew/octoflu
 ```
+
+## Python and MacOS
+This pipeline relies upon python3. Many MacOS computers have Python 2.7, so an update is required. The [Python website has an installer for Python 3.7](https://www.python.org/downloads/mac-osx/), if you use the package it will place python3 in /usr/local/bin/. Unfortunately, this needs you to set up an alias in your shell environment (e.g., echo "alias python=/usr/local/bin/python3.7" >> ~/.bash_profile).
+
+The best option is to use [Homebrew](https://brew.sh).
+
+```
+brew install pyenv
+pyenv install 3.7.3
+pyenv global 3.7.3
+pyenv version
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bash_profile
+```
+We have also used the [anaconda distribution with python3](https://www.anaconda.com/distribution/#download-section), and the dendropy module may be installed using conda (e.g., conda install -c bioconda dendropy). [Pip](https://pip.pypa.io/en/latest/installing/ ) is a good thing to install if you don't have it.
+
+[This is a very helpful article](https://opensource.com/article/19/5/python-3-default-macos) describing the best approach (towards the bottom) of getting python3 on your Mac
+
 
 ## Windows
 A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `pipeline.sh`. This script can be run directly in cmd.exe or through Anaconda.

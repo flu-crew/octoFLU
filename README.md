@@ -33,7 +33,7 @@ Unaligned fasta with query sequences (e.g., strain name with protein segment ide
 ## Usage
 
 ```
-bash pipeline.sh sample_data/query_sample.fasta
+bash octoFLU.sh sample_data/query_sample.fasta
 ```
 
 ## Installation

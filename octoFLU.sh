@@ -17,13 +17,13 @@ REFERENCE=reference_data/reference.fa
 
 # ===== Connect your programs here, assuming installed on your system
 BLASTN=blastn
-BLASTN=~/bin/blastn
+#BLASTN=~/bin/blastn
 MAKEBLASTDB=makeblastdb
-MAKEBLASTDB=~/bin/makeblastdb
+#MAKEBLASTDB=~/bin/makeblastdb
 SMOF=smof
 MAFFT=mafft
 FASTTREE=FastTreeMP
-FASTTREE=~/bin/FastTreeMP
+#FASTTREE=~/bin/FastTreeMP
 NN_CLASS=treedist.py
 
 # ===== Uncomment and connect your programs here using full path names

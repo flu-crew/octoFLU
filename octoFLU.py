@@ -23,15 +23,16 @@ else:
 reference = "reference_data/reference.fa"
 
 # ===== Connect your programs here, Linux style
-BLASTN = "/Users/michael.zeller/ncbi_blast/blastn"
-MAKEBLASTDB = "/Users/michael.zeller/ncbi_blast/makeblastdb"
+BLASTN = "blastn"
+MAKEBLASTDB = "makeblastdb"
 SMOF = "smof"
-MAFFT = "/usr/local/bin/mafft"
-FASTTREE = "/Users/michael.zeller/FastTree/FastTree"
+MAFFT = "mafft"
+FASTTREE = "FastTreeMP"
 NN_CLASS = "treedist.py"
-PYTHON = "python"
+#PYTHON = "python"
+PYTHON = "python3"
 
-# ===== Windows Style program referencing. Reccomend using WHERE to find commands in cmd.exe
+# ===== Windows Style program referencing. Recommend using WHERE to find commands in cmd.exe
 # BLASTN = "E:/lab/tools/ncbi_blast/blastn.exe"
 # MAKEBLASTDB = "E:/lab/tools/ncbi_blast/makeblastdb.exe"
 # SMOF = "E:/Anaconda3/Scripts/smof.exe"
@@ -46,7 +47,7 @@ PYTHON = "python"
 # SMOF=/usr/local/bin/smof
 # MAFFT=/usr/local/bin/mafft
 # FASTTREE=usr/local/bin/FastTree
-# NN_CLASS=nn_classifier.R
+# NN_CLASS=treedist.py
 # ANNOT_FASTA=annotate_headers.pl
 
 # ===== Check if dependencies are available, quit if not

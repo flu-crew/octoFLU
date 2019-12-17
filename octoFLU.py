@@ -23,15 +23,16 @@ else:
 reference = "reference_data/reference.fa"
 
 # ===== Connect your programs here, Linux style
-BLASTN = "/Users/michael.zeller/ncbi_blast/blastn"
-MAKEBLASTDB = "/Users/michael.zeller/ncbi_blast/makeblastdb"
+BLASTN = "blastn"
+MAKEBLASTDB = "makeblastdb"
 SMOF = "smof"
-MAFFT = "/usr/local/bin/mafft"
-FASTTREE = "/Users/michael.zeller/FastTree/FastTree"
+MAFFT = "mafft"
+FASTTREE = "FastTreeMP"
 NN_CLASS = "treedist.py"
-PYTHON = "python"
+#PYTHON = "python"
+PYTHON = "python3"
 
-# ===== Windows Style program referencing. Reccomend using WHERE to find commands in cmd.exe
+# ===== Windows Style program referencing. Recommend using WHERE to find commands in cmd.exe
 # BLASTN = "E:/lab/tools/ncbi_blast/blastn.exe"
 # MAKEBLASTDB = "E:/lab/tools/ncbi_blast/makeblastdb.exe"
 # SMOF = "E:/Anaconda3/Scripts/smof.exe"
@@ -46,7 +47,7 @@ PYTHON = "python"
 # SMOF=/usr/local/bin/smof
 # MAFFT=/usr/local/bin/mafft
 # FASTTREE=usr/local/bin/FastTree
-# NN_CLASS=nn_classifier.R
+# NN_CLASS=treedist.py
 # ANNOT_FASTA=annotate_headers.pl
 
 # ===== Check if dependencies are available, quit if not
@@ -152,6 +153,23 @@ with open(outDir + "/blast_output.txt", 'r') as file :
 			Mlist.append(fields[0])
 		if("|NS|" in fields[1]):
 			NSlist.append(fields[0])
+			
+#Make lists unique https://stackoverflow.com/questions/30650474/python-rename-duplicates-in-list-with-progressive-numbers-without-sorting-list
+def makeDistinct(elemList):
+	return list(map(lambda x: x[1] + str(elemList[:x[0]].count(x[1]) + 1) if elemList.count(x[1]) > 1 else x[1], enumerate(elemList)))
+H1list = makeDistinct(H1list)
+H3list = makeDistinct(H3list)
+N1list = makeDistinct(N1list)
+N2list = makeDistinct(N2list)
+PB2list = makeDistinct(PB2list)
+PB1list = makeDistinct(PB1list)
+PAlist = makeDistinct(PAlist)
+NPlist = makeDistinct(NPlist)
+Mlist = makeDistinct(Mlist)
+NSlist = makeDistinct(NSlist)
+
+#test = list(map(lambda x: x[1] + str(H3list[:x[0]].count(x[1]) + 1) if H3list.count(x[1]) > 1 else x[1], enumerate(H3list)))
+
 			
 with open(outDir + "/H1.ids", 'w') as file:
 	file.writelines(["%s\n" % item  for item in H1list])

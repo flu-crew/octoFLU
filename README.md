@@ -33,7 +33,7 @@ Unaligned fasta with query sequences (e.g., strain name with protein segment ide
 ## Usage
 
 ```
-bash pipeline.sh sample_data/query_sample.fasta
+bash octoFLU.sh sample_data/query_sample.fasta
 ```
 
 ## Installation
@@ -57,7 +57,7 @@ You will need to have an installation of:
 * [dendropy](https://dendropy.org/downloading.html),
 * and the included `treedist.py` script
 
-Edit the paths in `pipeline.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.
+Edit the paths in `octoFLU.sh` to connect `blastn`, `makeblastdb`, `smof` `mafft`, and `FastTree`.
 
 ```
 # Connect your reference dataset here
@@ -75,7 +75,7 @@ NN_CLASS=treedist.py
 Then run the pipeline
 
 ```
-bash pipeline.sh sample_data/query_sample.fasta
+bash octoFLU.sh sample_data/query_sample.fasta
 ```
 
 The output will be in a `*_Final_Output.txt` file and `*_output` folder, any trees generated will be listed and named by protein symbol, and `blast_output.txt` includes the query genes and their top BLASTn hit.
@@ -83,7 +83,7 @@ The output will be in a `*_Final_Output.txt` file and `*_output` folder, any tre
 The main bottleneck is waiting for trees to run in FastTree (an installation of multi-threaded version helps). A sampling of the output is included, split by `...`.
 
 ```
-bash pipeline.sh sample_data/query.fasta
+bash octoFLU.sh sample_data/query.fasta
 
 less query.fasta_Final_Output.txt
 
@@ -125,7 +125,7 @@ docker run -it -v ${PWD}:/data flucrew/octoflu:latest /bin/bash
 From inside the docker image you should be able to run the pipeline. Remember to copy files to `/data` to pull them out of the docker image to your computer.
 
 ```
-bash pipeline.sh sample_data/query_sample.fasta
+bash octoFLU.sh sample_data/query_sample.fasta
 cp -rf query_sample.fasta_output /data/.
 exit 
 ```
@@ -135,7 +135,7 @@ If you want to run your own dataset, hold the data in a fasta file (e.g., `mydat
 ```
 cd mydataset
 docker run -it -v ${PWD}:/data flucrew/octoflu:latest /bin/bash
-bash pipeline.sh /data/myseqs.fasta
+bash octoFLU.sh /data/myseqs.fasta
 ```
 
 After octoFLU is finished running copy data outside of docker
@@ -173,10 +173,10 @@ We have also used the [anaconda distribution with python3](https://www.anaconda.
 
 
 ## Windows
-A python script `pipeline.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `pipeline.sh`. This script can be run directly in cmd.exe or through Anaconda.
+A python script `octoFLU.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `octoFLU.sh`. This script can be run directly in cmd.exe or through Anaconda.
 
 ```
-python pipeline.py sample_data/query_sample.fasta
+python octoFLU.py sample_data/query_sample.fasta
 ```
 
 While the dependencies are the same, pathing generally works better if it is explicit.

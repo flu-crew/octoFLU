@@ -115,6 +115,8 @@ subprocess.call([MAKEBLASTDB,"-in",reference,"-dbtype","nucl"])
 
 # ===== Search your Blast Database
 subprocess.run([BLASTN,"-db",reference,"-query",baseName + ".clean","-num_alignments","1","-outfmt","6","-out",outDir + "/blast_output.txt"], check = True)
+#subprocess.run([BLASTN,"-db",reference,"-query",baseName + ".clean","-num_alignments","1","-max_hsps","1","-outfmt","6","-out",outDir + "/blast_output.txt"], check = True)
+#subprocess.run([BLASTN,"-db",reference,"-query",baseName + ".clean","-max_target_seqs","1","-max_hsps","1","-outfmt","6","-out",outDir + "/blast_output.txt"], check = True)
 
 print("... results in " + outDir + "/blast_output.txt")
 
@@ -155,18 +157,35 @@ with open(outDir + "/blast_output.txt", 'r') as file :
 			NSlist.append(fields[0])
 			
 #Make lists unique https://stackoverflow.com/questions/30650474/python-rename-duplicates-in-list-with-progressive-numbers-without-sorting-list
-def makeDistinct(elemList):
-	return list(map(lambda x: x[1] + str(elemList[:x[0]].count(x[1]) + 1) if elemList.count(x[1]) > 1 else x[1], enumerate(elemList)))
-H1list = makeDistinct(H1list)
-H3list = makeDistinct(H3list)
-N1list = makeDistinct(N1list)
-N2list = makeDistinct(N2list)
-PB2list = makeDistinct(PB2list)
-PB1list = makeDistinct(PB1list)
-PAlist = makeDistinct(PAlist)
-NPlist = makeDistinct(NPlist)
-Mlist = makeDistinct(Mlist)
-NSlist = makeDistinct(NSlist)
+#def makeDistinct(elemList):
+#	return list(map(lambda x: x[1] + str(elemList[:x[0]].count(x[1]) + 1) if elemList.count(x[1]) > 1 else x[1], enumerate(elemList)))
+#H1list = makeDistinct(H1list)
+#H3list = makeDistinct(H3list)
+#N1list = makeDistinct(N1list)
+#N2list = makeDistinct(N2list)
+#PB2list = makeDistinct(PB2list)
+#PB1list = makeDistinct(PB1list)
+#PAlist = makeDistinct(PAlist)
+#NPlist = makeDistinct(NPlist)
+#Mlist = makeDistinct(Mlist)
+#NSlist = makeDistinct(NSlist)
+
+#Make lists unique https://www.w3schools.com/python/python_howto_remove_duplicates.asp
+H1list = list(dict.fromkeys(H1list))
+H3list = list(dict.fromkeys(H3list))
+N1list = list(dict.fromkeys(N1list))
+N2list = list(dict.fromkeys(N2list))
+PB2list = list(dict.fromkeys(PB2list))
+PB1list = list(dict.fromkeys(PB1list))
+PAlist = list(dict.fromkeys(PAlist))
+NPlist = list(dict.fromkeys(NPlist))
+Mlist = list(dict.fromkeys(Mlist))
+NSlist = list(dict.fromkeys(NSlist))
+
+#
+#mylist = ["a", "b", "a", "c", "c"]
+#mylist = list( dict.fromkeys(mylist) )
+
 
 #test = list(map(lambda x: x[1] + str(H3list[:x[0]].count(x[1]) + 1) if H3list.count(x[1]) > 1 else x[1], enumerate(H3list)))
 

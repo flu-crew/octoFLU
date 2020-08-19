@@ -206,6 +206,7 @@ Explicit pathing is needed for anything not in the Windows Path. After using `pi
 There has been known issues involving file encoding, while the file needs to be converted to ANSI to run correctly.
 
 ## Future Considerations
+* Extend to include international evolutionary lineages.
 * Reannotate the tree with NN-clades for ease of use.
 * Integrate a script to combine gene assignments to a whole genome constellation descriptor.
 * Annotate input sequences with gene classification, and use these designations in the inferred phylogenetic trees.

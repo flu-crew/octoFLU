@@ -175,6 +175,8 @@ We have also used the [anaconda distribution with python3](https://www.anaconda.
 ## Windows
 A python script `octoFLU.py` has been provided that will run on Windows, Mac, or Linux machines with similar usage and output as the original `octoFLU.sh`. This script can be run directly in cmd.exe or through Anaconda.
 
+If running through Anaconda, call the python script `octoFLU.py` instead of the bash script `octoFLU.sh`.
+
 ```
 python octoFLU.py sample_data/query_sample.fasta
 ```
@@ -202,6 +204,17 @@ PYTHON = "E:/Anaconda3/python.exe"
 ```
 
 Explicit pathing is needed for anything not in the Windows Path. After using `pip` to install `dendroscope` and `smof`, the path to the `smof` executable can be found using `where smof`. Input and output remain unchanged.
+
+If running through [Ubuntu commandline on Windows 10](https://ubuntu.com/tutorials/ubuntu-on-windows#1-overview), it may be easiest to run from Desktop:
+
+Open Ubuntu app.
+
+```
+cd /mnt/c/Users/put_your_user_name_here/Desktop
+git clone https://github.com/flu-crew/octoFLU.git
+cd octoFLU
+bash octoFLU.sh sample_data/query_sample.fasta
+```
 
 There has been known issues involving file encoding, while the file needs to be converted to ANSI to run correctly.
 

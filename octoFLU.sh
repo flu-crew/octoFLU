@@ -22,7 +22,7 @@ MAKEBLASTDB=makeblastdb
 #MAKEBLASTDB=~/bin/makeblastdb
 SMOF=smof
 MAFFT=mafft
-FASTTREE=FastTreeMP
+FASTTREE=FastTree
 #FASTTREE=~/bin/FastTreeMP
 NN_CLASS=treedist.py
 
@@ -74,7 +74,7 @@ fi
 
 set -v
 # ===== Remove pipes in query header
-cat ${INPUT} | tr '|' '_' > ${BASENAME}.clean
+cat ${INPUT} | sed 's/[| ]/_/g' > ${BASENAME}.clean
 
 # ===== Create your Blast Database
 # ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl      # requires no spaces in header

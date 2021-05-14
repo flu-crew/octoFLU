@@ -6,6 +6,9 @@
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
 
+## UPDATE May 2021
+Reference database has been updated to include N2 clade names (i.e., 2002A vs 2002B; 1998A vs 1998B). [See Zeller et al. Coordinated evolution between N2 neuraminidase and H1 and H3 hemagglutinin genes increased influenza A virus genetic diversity in swine.](https://www.biorxiv.org/content/10.1101/2020.05.29.123828v1)
+
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 

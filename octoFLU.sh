@@ -2,6 +2,9 @@
 # Auth: Jennifer Chang
 # Date: 2019/03/13
 
+# begin block that redirect all output to STDERR
+{
+
 set -e
 set -u
 
@@ -69,7 +72,7 @@ echo "===== Dependencies check ====="
 if [[ $ERR -eq 1 ]]
 then
     echo "Link or install any of your 'need to install' programs above"
-    exit
+    exit 1
 fi
 
 set -v
@@ -78,7 +81,7 @@ cat ${INPUT} | sed 's/[| ]/_/g' > ${BASENAME}.clean
 
 # ===== Create your Blast Database
 # ${MAKEBLASTDB} -in ${REFERENCE} -parse_seqids -dbtype nucl      # requires no spaces in header
-${MAKEBLASTDB} -in ${REFERENCE} -dbtype nucl                      # allows spaces in header
+${MAKEBLASTDB} -in ${REFERENCE} -dbtype nucl        # allows spaces in header
 
 # ===== Search your Blast Database
 ${BLASTN} -db ${REFERENCE} -query ${BASENAME}.clean -num_alignments 1 -outfmt 6 -out ${OUTDIR}/blast_output.txt
@@ -146,3 +149,5 @@ echo "==== Final results in  ${BASENAME}_Final_Output.txt"
 echo "alignment and tree files in the '${OUTDIR}' folder"
 echo "Tree files are listed below: "
 ls -ltr ${OUTDIR}/*.tre
+
+} > /dev/stderr

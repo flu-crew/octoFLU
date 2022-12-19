@@ -4,7 +4,7 @@
 
 # octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine
 
-[![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)
+[![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)[![DOI](https://zenodo.org/badge/175280193.svg)](https://zenodo.org/badge/latestdoi/175280193)
 
 ## UPDATE May 2021
 Reference database has been updated to include N2 clade names (i.e., 2002A vs 2002B; 1998A vs 1998B). [See Zeller et al. Coordinated evolution between N2 neuraminidase and H1 and H3 hemagglutinin genes increased influenza A virus genetic diversity in swine.](https://www.biorxiv.org/content/10.1101/2020.05.29.123828v1)

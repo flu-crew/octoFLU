@@ -22,7 +22,7 @@ If you use this pipeline or the curated reference datasets in your work, please 
 
 Chang, J.<sup>+</sup>, Anderson, T.K.<sup>+</sup>, Zeller, M.A.<sup>+</sup>, Gauger, P.C., Vincent, A.L. (2019). octoFLU: Automated classification to evolutionary origin of influenza A virus gene sequences detected in U.S. swine. [*Microbiology Resource Announcements* 8:e00673-19](https://doi.org/10.1128/MRA.00673-19). <sup>+</sup>These authors contributed equally.
 
-If you have problems running the pipeline, please use the Issues feature of github, or e-mail tavis.anderson@usda.gov or jennifer.chang@usda.gov directly.
+If you have problems running the pipeline, please use the Issues feature of github, or e-mail tavis.anderson@usda.gov or blake.inderski@usda.gov directly.
 
 We thank Jordan Angell (USDA-APHIS, Visual Services) for the design of the octoFLU logo.
  

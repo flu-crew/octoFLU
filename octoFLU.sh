@@ -130,19 +130,19 @@ done
 [[ -f ${BASENAME}_Final_Output.txt ]] && rm ${BASENAME}_Final_Output.txt
 touch ${BASENAME}_Final_Output.txt
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
-# the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
+# the H1 gene at pipe 6, the US HA clade at pipe 1, and the Global HA clade at pipe 2.
 # These positions may be modified, or extended, to return any metadata required.
 echo $PYTHON
 [ -s ${OUTDIR}/H1.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/H1.tre -c 6,1,2 >> ${BASENAME}_Final_Output.txt
 [ -s ${OUTDIR}/H3.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/H3.tre -c 6,1,2 >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/N1.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/N1.tre -c 6,1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/N2.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/N2.tre -c 6,1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PB2.tre ] && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PB2.tre -c 6,1  >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PB1.tre ] && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PB1.tre -c 6,1  >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/PA.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PA.tre -c 6,1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/NP.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/NP.tre -c 6,1   >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/M.tre ]   && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/M.tre -c 6,1    >> ${BASENAME}_Final_Output.txt
-[ -s ${OUTDIR}/NS.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/NS.tre -c 6,1   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/N1.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/N1.tre -c 6,1,2   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/N2.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/N2.tre -c 6,1,2   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PB2.tre ] && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PB2.tre -c 6,1,2  >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PB1.tre ] && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PB1.tre -c 6,1,2  >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/PA.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/PA.tre -c 6,1,2   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/NP.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/NP.tre -c 6,1,2   >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/M.tre ]   && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/M.tre -c 6,1,2    >> ${BASENAME}_Final_Output.txt
+[ -s ${OUTDIR}/NS.tre ]  && ${PYTHON} ${NN_CLASS} -i ${OUTDIR}/NS.tre -c 6,1,2   >> ${BASENAME}_Final_Output.txt
 cp ${BASENAME}_Final_Output.txt ${OUTDIR}/.
 
 echo "==== Final results in  ${BASENAME}_Final_Output.txt"

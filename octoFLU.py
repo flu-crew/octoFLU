@@ -244,28 +244,28 @@ for segment in ARR:
 		
 #touch ${BASENAME}_Final_Output.txt
 # Annotations are based upon reading reference set deflines. For example, H1 genes have
-# the H1 gene at pipe 5, the US HA clade at pipe 1, and the Global HA clade at pipe 8.
+# the H1 gene at pipe 6, the US HA clade at pipe 1, and the Global HA clade at pipe 2.
 # These positions may be modified, or extended, to return any metadata required.
 if os.path.isfile(outDir + "/H1.tre"):
 	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/H1.tre -c 6,1,2 >>" + baseName + "_Final_Output.txt", shell = True)
 if os.path.isfile(outDir + "/H3.tre"):
 	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/H3.tre -c 6,1,2 >>" + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/N1.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N1.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N1.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/N2.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N2.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/N2.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/PB2.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PB2.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PB2.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/PB1.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PB1.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PB1.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/PA.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PA.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/PA.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/NP.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NP.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NP.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/M.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/M.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/M.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 if os.path.isfile(outDir + "/NS.tre"):
-	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NS.tre -c 6,1 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
+	subprocess.run(PYTHON + " " + NN_CLASS + " " + "-i" + outDir + "/NS.tre -c 6,1,2 >> " + baseName + "_Final_Output.txt", shell = True, check = True)
 
 copyfile(baseName + "_Final_Output.txt", outDir + "/" + baseName + "_Final_Output.txt")
 

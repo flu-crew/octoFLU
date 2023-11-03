@@ -14,7 +14,7 @@ These new reference data include internal gene designations for IAV in swine det
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
 
-This tool has been tested on swine H1 and H3 data (collected from 2014 to present), sequence from other serotypes, or sequence that is collected from outside North America may generate incorrect results. We suggest you use the [IRD Sequence Annotation tool](https://www.fludb.org/brc/influenza_batch_submission.spg?method=NewAnnotation&decorator=influenza) prior to running this pipeline. 
+This tool has been tested on swine H1 and H3 data (collected from 2014 to present), sequence from other serotypes, or sequence that is collected from outside North America may generate incorrect results. We suggest you use the [BV-BRC Genome Annotation tool](https://www.bv-brc.org/app/Annotation) prior to running this pipeline. 
 
 We also recommend that output from the automatic classification be interpreted conservatively, and that more comprehensive phylogenetic analyses may be required for accurate determination of evolutionary history. This pipeline generates a phylogeny using a limited set of reference sequences and annotates the queries based upon the "nearest neighbor." If query sequences are dissimilar to the annotated reference set (e.g., swine H1 sequence from the 1990s, or swine data collected in Euope or Asia) they are likely to be misclassified.
 

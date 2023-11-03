@@ -6,8 +6,10 @@
 
 [![Docker Automated build](https://img.shields.io/docker/cloud/build/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/) [![DockerHub Pulls](https://img.shields.io/docker/pulls/flucrew/octoflu.svg)](https://hub.docker.com/r/flucrew/octoflu/)[![DOI](https://zenodo.org/badge/175280193.svg)](https://zenodo.org/badge/latestdoi/175280193)
 
-## UPDATE May 2021
-Reference database has been updated to include N2 clade names (i.e., 2002A vs 2002B; 1998A vs 1998B). [See Zeller et al. Coordinated evolution between N2 neuraminidase and H1 and H3 hemagglutinin genes increased influenza A virus genetic diversity in swine.](https://www.biorxiv.org/content/10.1101/2020.05.29.123828v1)
+## UPDATE October 2023
+Reference database has been updated to include N1 and N2 clade names (i.e., 2002A vs 2002B; 1998A vs 1998B). [Zeller et al.](https://academic.oup.com/ve/article/7/2/veab090/6384522) and [Hufnagel et al.](https://academic.oup.com/ve/article/9/1/vead015/7059557)
+
+These new reference data include internal gene designations for IAV in swine detected in Europe and Asia. A more comprehensive reference set is available (contact Blake Inderski or Tavis Anderson) that includes private GISAID data.
 
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
@@ -222,7 +224,6 @@ bash octoFLU.sh sample_data/query_sample.fasta
 There has been known issues involving file encoding, while the file needs to be converted to ANSI to run correctly.
 
 ## Future Considerations
-* Extend to include international evolutionary lineages.
 * Reannotate the tree with NN-clades for ease of use.
 * Integrate a script to combine gene assignments to a whole genome constellation descriptor.
 * Annotate input sequences with gene classification, and use these designations in the inferred phylogenetic trees.

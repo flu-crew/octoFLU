@@ -9,7 +9,7 @@
 ## UPDATE October 2023
 Reference database has been updated to include N1 and N2 clade names (i.e., 2002A vs 2002B; 1998A vs 1998B). [Zeller et al.](https://academic.oup.com/ve/article/7/2/veab090/6384522) and [Hufnagel et al.](https://academic.oup.com/ve/article/9/1/vead015/7059557)
 
-These new reference data include internal gene designations for IAV in swine detected in Europe and Asia. A more comprehensive reference set is available (contact Blake Inderski or Tavis Anderson) that includes private GISAID data.
+These new reference data include internal gene designations for IAV in swine detected in Europe and Asia. A more comprehensive reference set is available (please contact Blake Inderski or Tavis Anderson) that includes GISAID data.
 
 ## Use
 Determines evolutionary origin of influenza A virus genes through inference of maximum likelihood tree and then assignment of a defined genetic clade  based on nearest neighbor determined by patristic distances.
